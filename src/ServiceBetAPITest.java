@@ -1,3 +1,8 @@
+
+import Controller.BetESSAPI;
+import Model.Apostador;
+import Model.Evento;
+
 public class ServiceBetAPITest {
 
     public static void main(String[] args) {
