@@ -12,8 +12,6 @@ public class Aposta {
 	private float m_aposta;
 	private Evento.Resultado resultado;
 	private Odd odd_fixada;
-	private  BufferedReader in;
-	private PrintStream out;
 
 
 	public Aposta(){
@@ -21,8 +19,6 @@ public class Aposta {
 		this.m_aposta = 0;
 		this.resultado = null;
 		this.odd_fixada = null;
-		this.in = new BufferedReader(new InputStreamReader(System.in));
-		this.out = System.out;
 	}
 
 	public Aposta(Apostador apostador, float m_aposta, char resultado, Odd odd_actual) {
@@ -40,8 +36,6 @@ public class Aposta {
 				break;
 		}
 		this.odd_fixada = odd_actual.clone();
-		this.in = new BufferedReader(new InputStreamReader(System.in));
-	    this.out = System.out;
 	}
 
 	// getter and setters
@@ -79,33 +73,4 @@ public class Aposta {
 	}
 
 
-//	Views para Apostador
-
-	public void viewCreateAposta(){
-		String readinput;
-		this.out.println("Introduza o resultado e o montante a apostar: montante, resultado\n");
-		try {
-			readinput = this.in.readLine();
-			String[] tokens = readinput.split(",");
-
-
-			switch (tokens[1]) {
-				case "1":
-					this.setResultado(Evento.Resultado.VITORIA);
-					break;
-				case "x":
-					this.setResultado(Evento.Resultado.EMPATE);
-					break;
-				case "2":
-					this.setResultado(Evento.Resultado.DERROTA);
-					break;
-			}
-
-			this.setM_aposta(Float.parseFloat(tokens[0]));
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
 }

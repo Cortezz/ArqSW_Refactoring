@@ -24,8 +24,6 @@ public class Evento implements Subject {
 	private Date dataEvento;
 	private int id;
 	private Vector<Aposta> listaApostas;
-	private final BufferedReader in;
-	private final PrintStream out;
 	private boolean isOpen;
 	private Odd odds;
 
@@ -38,9 +36,6 @@ public class Evento implements Subject {
 		this.id=uniqueId.getAndIncrement();
 		this.odds = new Odd();
 		this.listaApostas = new Vector<Aposta>();
-
-		this.in = new BufferedReader(new InputStreamReader(System.in));
-		this.out = System.out;
 	}
 
 	public Evento() {
@@ -52,9 +47,6 @@ public class Evento implements Subject {
 		this.id=uniqueId.getAndIncrement();
 		this.odds = new Odd();
 		this.listaApostas = new Vector<Aposta>();
-
-		this.in = new BufferedReader(new InputStreamReader(System.in));
-		this.out = System.out;
 	}
 
 	public void setEquipa1(String equipa1) {
@@ -151,55 +143,5 @@ public class Evento implements Subject {
 		this.odds.setOdd2(odd_2);
 		this.odds.setOddx(odd_x);
 	}
-
-	// views Evento
-
-	public String viewEvento() {
-		return "Evento{" +
-				"equipa1='" + equipa1 + '\'' +
-				", equipa2='" + equipa2 + '\'' +
-				", resultado_final=" + resultado_final +
-				", estado=" + isOpen +
-				", data da aposta" + dataEvento.toString() +
-				", ultima odd" + this.odds.toString() +
-				'}';
-	}
-
-	public void viewCreateEvento(){
-
-		String readinput;
-		this.out.print("Introduza as equipas participantes no evento: (Equipa1, Equipa2, DataEvento)\n");
-		try {
-			readinput = this.in.readLine();
-			String[] tokens = readinput.split(",");
-			this.setEquipa2(tokens[1]);
-			this.setEquipa1(tokens[0]);
-			this.setDataEvento(Date.from(Instant.now()));
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void viewUpdateEvento(){
-		String readinput;
-		this.out.print("Introduza as equipas participantes no evento: (Equipa1, Equipa2, DataEvento)\n");
-		try {
-			readinput = this.in.readLine();
-			String[] tokens = readinput.split(",");
-			this.setEquipa2(tokens[1]);
-			this.setEquipa1(tokens[0]);
-			this.setDataEvento(Date.from(Instant.now()));
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void viewDeleteApostador(){
-		this.out.println("Remover Apostador" + this.viewEvento());
-
-	}
-
 
 }

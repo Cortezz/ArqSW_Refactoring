@@ -1,8 +1,7 @@
 package Controller;
 
 
-import Model.Apostador;
-import Model.Evento;
+import Model.*;
 import java.time.Instant;
 import java.util.*;
 import java.io.BufferedReader;
@@ -27,15 +26,20 @@ public class BetESSAPI {
 		this.in = new BufferedReader(new InputStreamReader(System.in));
 		this.out = System.out;
 	}
+        
+        //interface sobre Apostas
 
 	public void registaAposta(Apostador apostador, Evento evento) {
 		evento.registaAposta(apostador);
 	}
+        
+        public void setResultadoDaAposta (Aposta a, Evento.Resultado r){
+            a.setResultado(r);
+        }
 
 	// Interface sobre Eventos
 
 	public boolean actualizaOdd(Evento evento, int odd_1, int odd_x, int odd_2){
-
 		return evento.actualizaOdd(odd_1,odd_x,odd_2);
 	}
 
@@ -99,7 +103,7 @@ public class BetESSAPI {
 	public Apostador actualizaApostador(Apostador apostador) {
 
 
-		apostador.viewUpdateApostadpr(apostador);
+		apostador.viewUpdateApostador(apostador);
 
 
 		return apostador;
