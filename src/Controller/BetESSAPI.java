@@ -2,29 +2,30 @@ package Controller;
 
 
 import Model.*;
+import View.*;
 import java.time.Instant;
 import java.util.*;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
 
 public class BetESSAPI {
 
-	private Vector<Evento> listaEventos;
-	private Vector<Apostador> listaApostadores;
+	private ListaEventos listaEventos;
+	private ListaApostadores listaApostadores;
+        
 	private double betESStotal;
 	private String name;
-
-	private final BufferedReader in;
-	private final PrintStream out;
+        private ApostaView apostaView;
+        private EventoView eventoView;
+        private ApostadorView apostadorView;
 
 	public BetESSAPI() {
+            
 		this.betESStotal = 0;
-		this.listaEventos = new Vector<Evento>();
-		this.listaApostadores = new Vector<Apostador>();
+		this.listaEventos = new ListaEventos();
+		this.listaApostadores = new ListaApostadores();
 		this.name = "BetESSAPI";
-		this.in = new BufferedReader(new InputStreamReader(System.in));
-		this.out = System.out;
+                this.apostadorView = new ApostadorView(this);
+                this.eventoView = new EventoView(this);
+                this.apostaView = new ApostaView(this);
 	}
         
         //interface sobre Apostas
@@ -68,7 +69,7 @@ public class BetESSAPI {
 		Evento newevento = new Evento();
 
 		newevento.viewCreateEvento();
-		this.listaEventos.add(newevento);
+		this.listaEventos.addEvento(newevento);
 		return newevento;
 	}
 
@@ -85,7 +86,7 @@ public class BetESSAPI {
 	public Apostador registaApostador(String nome, String  email, double coins){
 
 		Apostador newuser = new Apostador(nome, email, coins);
-		listaApostadores.add(newuser);
+		listaApostadores.addApostador(newuser);
 		return newuser;
 	}
 
