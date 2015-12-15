@@ -5,6 +5,7 @@
  */
 package View;
 
+import Model.Aposta;
 import Model.Evento;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,8 +29,9 @@ public class ApostaView {
         this.controller = betESS;
     }
     
-    public void viewCreateAposta(){
+    public Aposta viewCreateAposta(){
 		String readinput;
+                Aposta a = null;
 		this.out.println("Introduza o resultado e o montante a apostar: montante, resultado\n");
 		try {
 			readinput = this.in.readLine();
@@ -38,22 +40,20 @@ public class ApostaView {
 
 			switch (tokens[1]) {
 				case "1":
-					this.setResultado(Evento.Resultado.VITORIA);
+					a.setResultado(Evento.Resultado.VITORIA);
 					break;
 				case "x":
-					this.setResultado(Evento.Resultado.EMPATE);
+					a.setResultado(Evento.Resultado.EMPATE);
 					break;
 				case "2":
-					this.setResultado(Evento.Resultado.DERROTA);
+					a.setResultado(Evento.Resultado.DERROTA);
 					break;
 			}
 
-			this.setM_aposta(Float.parseFloat(tokens[0]));
+			a.setM_aposta(Float.parseFloat(tokens[0]));
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		} catch (IOException e) {e.printStackTrace();}
+                return a;
 	}
     
 }

@@ -1,9 +1,6 @@
 package Model;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.time.Instant;
@@ -49,22 +46,21 @@ public class Evento implements Subject {
 		this.listaApostas = new Vector<Aposta>();
 	}
 
-	public void setEquipa1(String equipa1) {
-		this.equipa1 = equipa1;
-	}
+        /** Getters **/
+        public String getEquipa1() { return this.equipa1;}
+        public String getEquipa2() { return this.equipa2;}
+        public boolean getStatus () {return this.isOpen;}
+        public Evento.Resultado getResultadoFinal () {return this.resultado_final;}
+        public int getID() {return this.id;}
+        public Odd getOdds () {return this.odds;}
+        public Date getDataEvento () {return this.dataEvento;}
+        /** Setters **/ 
+        public void setEquipa1(String equipa1) {this.equipa1 = equipa1;}
+        public void setEquipa2(String equipa2) {this.equipa2 = equipa2;}
+        public void setDataEvento(Date dataEvento) {this.dataEvento = dataEvento;}
 
-	public String getEquipa2() {
-		return this.equipa2;
-	}
-
-	public void setEquipa2(String equipa2) {
-		this.equipa2 = equipa2;
-	}
-
-	public void setDataEvento(Date dataEvento) {
-		this.dataEvento = dataEvento;
-	}
-
+        
+        
 	public boolean fechaEvento(char resultadofinal){
 
 			switch (resultadofinal) {

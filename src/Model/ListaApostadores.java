@@ -1,26 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-import java.util.Vector;
+import java.util.HashMap;
 
 /**
- *
- * @author Cortez
+ *  Class whose purpose is to store betters.
+ * @author José Cortez
  */
 public class ListaApostadores {
     
-    private Vector<Apostador> listaApostadores;
+    private HashMap<String,Apostador> listaApostadores;
     
+    
+    /**
+     * Empty constructor.
+     */
     public ListaApostadores () {
-        this.listaApostadores = new Vector<Apostador>();
+        this.listaApostadores = new HashMap<String,Apostador>();
     }
     
     
-    public void addApostador (Apostador a){
-        this.listaApostadores.add(a);
+    /**
+     * Adds a punter to its punter list.
+     * @param email E-mail of the punter.
+     * @param a Instance of the punter (Apostador) object to be added.
+     */
+    public void addApostador (String email, Apostador a){
+        this.listaApostadores.put(email,a);
     }
 }

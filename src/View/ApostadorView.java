@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import Controller.BetESSAPI;
@@ -28,48 +23,51 @@ public class ApostadorView {
             this.controller = betESS;
         }
 
-	public void viewCreateApostador(){
+	public Apostador viewCreateApostador(){
 
 		String readinput;
+                Apostador a = new Apostador();
 		this.out.print("Introduza os seguintes dados de Apostador: (Nome, email, montante betESScoins\n");
 		try {
 			readinput = this.in.readLine();
 			String[] tokens = readinput.split(",");
-			this.setName(tokens[0]);
-			this.setEmail(tokens[1]);
-			this.setBetESScoins(Double.parseDouble(tokens[2]));
-			this.viewApostador();
+			a.setName(tokens[0]);
+			a.setEmail(tokens[1]);
+			a.setBetESScoins(Double.parseDouble(tokens[2]));
+			this.viewApostador(a);
+                        return a;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+                return null;
 	}
 
-	public void viewUpdateApostador(Apostador apostador){
+	public void viewUpdateApostador(Apostador a){
 
 		String readinput;
-		this.out.print("Introduza novos dados de Apostador: (Nome("+ this.name +"), email("+this.email+"), montante betESScoins("+ this.betESScoins+")\n");
+		this.out.print("Introduza novos dados de Apostador: (Nome("
+                        +a.getName()+"), email("+a.getEmail()+"), montante betESScoins("+ a.getBetESScoins()+")\n");
 		try {
 			readinput = this.in.readLine();
 			String[] tokens = readinput.split(",");
-			apostador.setName(tokens[0]);
-			apostador.setEmail(tokens[1]);
-			apostador.setBetESScoins(Double.parseDouble(tokens[2]));
+			a.setName(tokens[0]);
+			a.setEmail(tokens[1]);
+			a.setBetESScoins(Double.parseDouble(tokens[2]));
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void viewDeleteApostador(){
-		this.out.println("Remover Apostador"+this.viewApostador());
+	public void viewDeleteApostador(Apostador a){
+		this.out.println("Remover Apostador"+this.viewApostador(a));
 
 	}
 
-	public String viewApostador(){
+	public String viewApostador(Apostador a){
 
 		String view;
-		view = new String ("Apostador{" + "email='" + email +  ", betESScoins=" + betESScoins + ", name='" + name + '\'' + '}');
+		view = new String ("Apostador{" + "email='" + a.getEmail() +  ", betESScoins=" + a.getBetESScoins() + ", name='" + a.getName() + '\'' + '}');
 		this.out.println(view);
 		return view;
 

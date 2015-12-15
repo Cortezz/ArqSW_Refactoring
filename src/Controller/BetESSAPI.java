@@ -86,7 +86,7 @@ public class BetESSAPI {
 	public Apostador registaApostador(String nome, String  email, double coins){
 
 		Apostador newuser = new Apostador(nome, email, coins);
-		listaApostadores.addApostador(newuser);
+		listaApostadores.addApostador(email, newuser);
 		return newuser;
 	}
 

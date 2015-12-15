@@ -6,6 +6,7 @@
 package View;
 
 import Controller.BetESSAPI;
+import Model.Evento;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -29,50 +30,52 @@ public class EventoView {
         this.controller = betESS; 
     }
     
-    public String viewEvento() {
+    public String viewEvento(Evento e) {
 		return "Evento{" +
-				"equipa1='" + equipa1 + '\'' +
-				", equipa2='" + equipa2 + '\'' +
-				", resultado_final=" + resultado_final +
-				", estado=" + isOpen +
-				", data da aposta" + dataEvento.toString() +
-				", ultima odd" + this.odds.toString() +
+				"equipa1='" + e.getEquipa1() + '\'' +
+				", equipa2='" + e.getEquipa2() + '\'' +
+				", resultado_final=" + e.getResultadoFinal() +
+				", estado=" + e.getStatus() +
+				", data da aposta" + e.getDataEvento().toString() +
+				", ultima odd" + e.getOdds().toString()+
 				'}';
 	}
 
-	public void viewCreateEvento(){
+	public Evento viewCreateEvento(){
 
+                Evento ev = null;
 		String readinput;
 		this.out.print("Introduza as equipas participantes no evento: (Equipa1, Equipa2, DataEvento)\n");
 		try {
 			readinput = this.in.readLine();
 			String[] tokens = readinput.split(",");
-			this.setEquipa2(tokens[1]);
-			this.setEquipa1(tokens[0]);
-			this.setDataEvento(Date.from(Instant.now()));
+			ev.setEquipa2(tokens[1]);
+			ev.setEquipa1(tokens[0]);
+			ev.setDataEvento(Date.from(Instant.now()));
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+                return ev;
+	}
+
+	public void viewUpdateEvento(Evento ev){
+		String readinput;
+		this.out.print("Introduza as equipas participantes no evento: (Equipa1, Equipa2, DataEvento)\n");
+		try {
+			readinput = this.in.readLine();
+			String[] tokens = readinput.split(",");
+			ev.setEquipa2(tokens[1]);
+			ev.setEquipa1(tokens[0]);
+			ev.setDataEvento(Date.from(Instant.now()));
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void viewUpdateEvento(){
-		String readinput;
-		this.out.print("Introduza as equipas participantes no evento: (Equipa1, Equipa2, DataEvento)\n");
-		try {
-			readinput = this.in.readLine();
-			String[] tokens = readinput.split(",");
-			this.setEquipa2(tokens[1]);
-			this.setEquipa1(tokens[0]);
-			this.setDataEvento(Date.from(Instant.now()));
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void viewDeleteApostador(){
-		this.out.println("Remover Apostador" + this.viewEvento());
+	public void viewDeleteEvento(Evento e){
+		this.out.println("Remover Evento" + this.viewEvento(e));
 
 	}
     

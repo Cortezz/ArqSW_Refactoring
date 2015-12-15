@@ -1,26 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-import java.util.Vector;
+import java.util.HashMap;
+
+
 
 /**
- *
- * @author Cortez
+ * Class whose purpose is to store events.
+ * @author José Cortez
  */
 public class ListaEventos {
     
-    private Vector<Evento> listaEventos;
+    private HashMap<Integer,Evento> listaEventos;
     
+    /**
+     * Empty constructor.
+     */
     public ListaEventos ()  {
-        this.listaEventos = new Vector<Evento>();
+        this.listaEventos = new HashMap<Integer,Evento>();
     }
     
-    public void addEvento (Evento e) {
-        listaEventos.add(e);
+    /**
+     * Adds an event.
+     * @param id Unique identifier of the event.
+     * @param e Instance of the event (evento) object to be added.
+     */
+    public void addEvento (int id, Evento e) {
+        listaEventos.put(id,e);
     }
     
 }
