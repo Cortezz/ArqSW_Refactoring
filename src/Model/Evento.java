@@ -5,6 +5,10 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.time.Instant;
 
+/** 
+ * Class which represents an event.
+ * @author José Cortez
+ */
 public class Evento implements Subject {
 
 	public enum Resultado {
@@ -24,6 +28,12 @@ public class Evento implements Subject {
 	private boolean isOpen;
 	private Odd odds;
 
+        /**
+         * Param constructor.
+         * @param equipa1 Name of the home team.
+         * @param equipa2 Name of the away team.
+         * @param data Date on which the event is going to take place.
+         */
 	public Evento(String equipa1, String equipa2, Date data) {
 		this.equipa1 = equipa1;
 		this.equipa2 = equipa2;
@@ -35,6 +45,9 @@ public class Evento implements Subject {
 		this.listaApostas = new Vector<Aposta>();
 	}
 
+        /**
+         * Empty Constructor.
+         */
 	public Evento() {
 		this.equipa1 = null;
 		this.equipa2 = null;
@@ -62,7 +75,11 @@ public class Evento implements Subject {
         public void setDataEvento(Date dataEvento) {this.dataEvento = dataEvento;}
 
         
-        
+        /**
+         * Closes an event. After this stage no bets will be able to take place.
+         * @param resultadofinal Final result of the event.
+         * @return Boolean condition which expresses the method's success.
+         */
 	public boolean fechaEvento(char resultadofinal){
 
 			switch (resultadofinal) {
@@ -97,6 +114,13 @@ public class Evento implements Subject {
             this.listaApostas.add(a);
         }
 
+        /**
+         * Updates the odds.
+         * @param odd1 Odds of a home win.
+         * @param oddx Odds of an away win.
+         * @param odd2 Odds of a draw.
+         * @return Boolean condition which represents the method's success.
+         */
 	public boolean actualizaOdd(int odd1, int oddx, int odd2 ){
 		this.odds.setOddx(oddx);
 		this.odds.setOdd1(odd1);
@@ -109,6 +133,7 @@ public class Evento implements Subject {
 
 	}
 
+        // BAD SMELLS!
 	public void notifyApostadores() {
 		int premio = 0;
 		if (!this.isOpen){
@@ -137,6 +162,7 @@ public class Evento implements Subject {
 		}
 	}
 
+        
 	public void setOdds(float odd_1, float odd_x, float odd_2) {
 		this.odds = new Odd(odd_1,odd_x,odd_2);
 	}

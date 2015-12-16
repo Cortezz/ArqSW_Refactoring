@@ -1,51 +1,45 @@
 package Model;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
 
-
+/**
+ * Class which represents the punter.
+ * @author José Cortez
+ */
 public class Apostador implements Observer{
 
 	private String email;
 	private double betESScoins;
 	private String name;
 
+        /**
+         * Param constructor.
+         * @param name Name of the punter.
+         * @param email E-mail of the punter.
+         * @param betESScoins Amount of BetESSCoins the punter has.
+         */
 	public Apostador(String name, String email, double betESScoins) {
 		this.email = email;
 		this.name = name;
 	}
 
+        /**
+         * Empty Constructor.
+         */
 	public Apostador() {
             this.email="";
             this.betESScoins = 0;
             this.name = "";
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public double getBetESScoins() {
-		return betESScoins;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setBetESScoins(double betESScoins) {
-		this.betESScoins = betESScoins;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+        
+        /**Getters*/
+	public String getEmail() {return email;}
+        public double getBetESScoins() {return betESScoins;}
+        public String getName() { return name;}
+        /**Setters**/
+        public void setEmail(String email) { this.email = email;}
+        public void setBetESScoins(double betESScoins) { this.betESScoins = betESScoins;}
+        public void setName(String name) { this.name = name;}
 
 	@Override
 	public String toString() {
@@ -58,9 +52,7 @@ public class Apostador implements Observer{
 
 	@Override
 	public void update(String notificacao) {
-
-
-		System.out.println("\nApostador(" + this.name + "):" + notificacao + "\n");
+            System.out.println("\nApostador(" + this.name + "):" + notificacao + "\n");
 	}
         
         

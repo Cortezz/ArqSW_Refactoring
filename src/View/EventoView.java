@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import Controller.BetESSAPI;
@@ -15,7 +10,7 @@ import java.time.Instant;
 import java.util.Date;
 
 /**
- *
+ * Class which gives the CRUD methods for Evento's View.
  * @author José Cortez
  */
 public class EventoView {
@@ -24,12 +19,25 @@ public class EventoView {
     private final PrintStream out;
     private BetESSAPI controller;
     
+    /**
+     * Implicit stdin and stdout initialization.
+     * @param betESS Controller to be added as a reference.
+     */
     public EventoView (BetESSAPI betESS) {
         this.in = new BufferedReader(new InputStreamReader(System.in));
 	this.out = System.out;
         this.controller = betESS; 
     }
     
+    
+    /** CRUD Methods **/
+    
+    
+    /**
+     * View - Read Method.
+     * @param e Event to be read.
+     * @return ToString-esque appearance.
+     */
     public String viewEvento(Evento e) {
 		return "Evento{" +
 				"equipa1='" + e.getEquipa1() + '\'' +
@@ -41,42 +49,49 @@ public class EventoView {
 				'}';
 	}
 
-	public Evento viewCreateEvento(){
+    
+    
+    /**
+     * View - Create Method.
+     * @return Returns the created Event.
+     */
+    public Evento viewCreateEvento(){
 
-                Evento ev = null;
-		String readinput;
-		this.out.print("Introduza as equipas participantes no evento: (Equipa1, Equipa2, DataEvento)\n");
-		try {
-			readinput = this.in.readLine();
-			String[] tokens = readinput.split(",");
-			ev.setEquipa2(tokens[1]);
-			ev.setEquipa1(tokens[0]);
-			ev.setDataEvento(Date.from(Instant.now()));
+        Evento ev = null;
+        String readinput;
+        this.out.print("Introduza as equipas participantes no evento: (Equipa1, Equipa2, DataEvento)\n");
+        try {
+            readinput = this.in.readLine();
+            String[] tokens = readinput.split(",");
+            ev.setEquipa2(tokens[1]);
+            ev.setEquipa1(tokens[0]);
+            ev.setDataEvento(Date.from(Instant.now()));
+        } catch (IOException e) {e.printStackTrace();}
+        return ev;
+    }
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-                return ev;
-	}
+    /**
+     * View - Update Method.
+     * @param ev Event to be updated.
+     */
+    public void viewUpdateEvento(Evento ev){
+        String readinput;
+        this.out.print("Introduza as equipas participantes no evento: (Equipa1, Equipa2, DataEvento)\n");
+        try {
+            readinput = this.in.readLine();
+            String[] tokens = readinput.split(",");
+            ev.setEquipa2(tokens[1]);
+            ev.setEquipa1(tokens[0]);
+            ev.setDataEvento(Date.from(Instant.now()));
+        } catch (IOException e) {e.printStackTrace();}
+    }
 
-	public void viewUpdateEvento(Evento ev){
-		String readinput;
-		this.out.print("Introduza as equipas participantes no evento: (Equipa1, Equipa2, DataEvento)\n");
-		try {
-			readinput = this.in.readLine();
-			String[] tokens = readinput.split(",");
-			ev.setEquipa2(tokens[1]);
-			ev.setEquipa1(tokens[0]);
-			ev.setDataEvento(Date.from(Instant.now()));
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void viewDeleteEvento(Evento e){
-		this.out.println("Remover Evento" + this.viewEvento(e));
-
-	}
+    /** 
+     * View - Delete Method.
+     * @param e Event to be deleted.
+     */
+    public void viewDeleteEvento(Evento e){
+        this.out.println("Remover Evento" + this.viewEvento(e));
+    }
     
 }

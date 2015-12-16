@@ -27,7 +27,7 @@ public class ListaEventos {
     /**
      * Adds an event.
      * @param id Unique identifier of the event.
-     * @param e Instance of the event (evento) object to be added.
+     * @param e Instance of the event object to be added.
      */
     public void addEvento (int id, Evento e) {
         listaEventos.put(id,e);
