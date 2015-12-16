@@ -2,6 +2,9 @@
 import Controller.BetESSAPI;
 import Model.Apostador;
 import Model.Evento;
+import Model.Aposta;
+import Model.Odd;
+import View.*;
 
 public class ServiceBetAPITest {
 
@@ -48,11 +51,55 @@ public class ServiceBetAPITest {
         // Evento evento1 = casaApostas.registaEvento(bookie1);
         // casaApostas.fechaEvento(bookie, evento1);*/
         
-        BetESSAPI betESS = new BetESSAPI(); 
+        
+        //////
+        // Novos testes
+        /////
+        
+        BetESSAPI betESS = new BetESSAPI();/*
         Evento e = betESS.registaEvento();
-        betESS.viewEventos();
+        betESS.viewEventos();*/
+        
+        
+        /** Teste VIEW EVENTO**//*
+        EventoView ev = new EventoView(betESS);
+        //Create
+        Evento e1 = ev.viewCreateEvento();
+        //Read
+        System.out.println(ev.viewEvento(e1));
+        //Update
+        ev.viewUpdateEvento(e1);
+        //Delete
+        ev.viewDeleteEvento(e1);*/
 
 
+        
+        /** Teste Apostador View **/
+        ApostadorView av = new ApostadorView(betESS);/*
+        // Create
+        Apostador a1 = av.viewCreateApostador();
+        // Read
+        System.out.println(av.viewApostador(a1));
+        //Update
+        av.viewUpdateApostador(a1);
+        //Delete
+        av.viewDeleteApostador(a1);*/
+        
+        /** Teste Aposta View **/
+        ApostaView apv = new ApostaView(betESS);
+        //Create
+        Apostador a2 = av.viewCreateApostador();
+        Aposta ap1 = apv.viewCreateAposta();
+        ap1.setApostador(a2);
+        ap1.setOdd_fixada(new Odd());
+        //Read
+        System.out.println(apv.viewAposta(ap1));
+        //Update
+        apv.UpdateAposta(ap1);
+        //Delete
+        apv.deleteAposta(ap1);
+        
+        
 
 
     }

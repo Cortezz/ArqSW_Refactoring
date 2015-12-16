@@ -98,7 +98,6 @@ public class ApostadorView {
 
 		String view;
 		view = new String ("Apostador{" + "email='" + a.getEmail() +  ", betESScoins=" + a.getBetESScoins() + ", name='" + a.getName() + '\'' + '}');
-		this.out.println(view);
 		return view;
 
 	}

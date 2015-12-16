@@ -55,7 +55,7 @@ public class ApostaView {
      */
     public Aposta viewCreateAposta(){
         String readinput;
-        Aposta a = null;
+        Aposta a = new Aposta();
         this.out.println("Introduza o resultado e o montante a apostar: montante, resultado\n");
         try {
             readinput = this.in.readLine();
@@ -72,8 +72,9 @@ public class ApostaView {
                             break;
             }
             a.setM_aposta(Float.parseFloat(tokens[0]));
+            return a;
         } catch (IOException e) {e.printStackTrace();}
-        return a;
+        return null;
     }
     
     

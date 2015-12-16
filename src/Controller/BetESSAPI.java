@@ -52,7 +52,7 @@ public class BetESSAPI {
 
 		HashMap<Integer, Evento> eventos = (HashMap)listaEventos.getListaEventos();
 		for (Evento e : eventos.values())
-                    eventoView.viewEvento(e);
+                    System.out.println(eventoView.viewEvento(e));
 		
 	}
 
