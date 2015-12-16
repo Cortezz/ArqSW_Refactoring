@@ -29,6 +29,22 @@ public class ApostaView {
         this.controller = betESS;
     }
     
+    
+    
+    
+    public String viewAposta(Aposta a) {
+        ApostadorView av = new ApostadorView();
+        
+        return "Aposta{" +
+            "Apostador='" + av.viewApostador(a.getApostador()) +
+            ", m_aposta='" + a.getM_aposta() +
+            ", Resultado_final='" + a.getResultado() +
+            ", Odd_fixada='" +a.getOdd_fixada().toString() +
+            '}';
+	}
+    
+    /** Métodos CRUD **/
+    
     public Aposta viewCreateAposta(){
 		String readinput;
                 Aposta a = null;
@@ -55,5 +71,34 @@ public class ApostaView {
 		} catch (IOException e) {e.printStackTrace();}
                 return a;
 	}
+    
+    
+    
+    public void UpdateAposta (Aposta a){
+        String readinput;
+	this.out.println("Introduza o resultado e o montante a apostar: montante, resultado\n");
+        try {
+            readinput = this.in.readLine();
+            String[] tokens = readinput.split(",");
+            switch (tokens[1]) {
+		case "1":
+                    a.setResultado(Evento.Resultado.VITORIA);
+                    break;
+                case "x":
+                    a.setResultado(Evento.Resultado.EMPATE);
+                    break;
+                case "2":
+                    a.setResultado(Evento.Resultado.DERROTA);
+                    break;
+            }
+            a.setM_aposta(Float.parseFloat(tokens[0]));
+            } catch (IOException e) {e.printStackTrace();}
+        
+    }
+    
+    public void deleteAposta (Aposta a){
+        this.out.println("Remover Aposta"+this.viewAposta(a));
+        
+    }
     
 }

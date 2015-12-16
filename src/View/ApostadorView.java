@@ -22,6 +22,11 @@ public class ApostadorView {
             this.out = System.out;
             this.controller = betESS;
         }
+        
+        public ApostadorView (){
+            this.in = new BufferedReader(new InputStreamReader(System.in));
+            this.out = System.out;
+        }
 
 	public Apostador viewCreateApostador(){
 
