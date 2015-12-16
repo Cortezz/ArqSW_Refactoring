@@ -72,5 +72,17 @@ public class Aposta {
 		this.resultado = resultado;
 	}
 
+        
+        
+        
+        /**Equals**/
+        @Override
+        public boolean equals (Object o) {
+            if (this==o) return true;
+            if (o==null || o.getClass()!=this.getClass()) return false;
+            Aposta a = (Aposta)o;
+            return (this.apostador.equals(a.getApostador()) && this.m_aposta==a.getM_aposta() && this.odd_fixada.equals(a.getOdd_fixada())
+                    && this.resultado.equals(a.getResultado()));
+        }
 
 }

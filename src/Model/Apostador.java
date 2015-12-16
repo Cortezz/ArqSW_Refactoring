@@ -62,6 +62,16 @@ public class Apostador implements Observer{
 
 		System.out.println("\nApostador(" + this.name + "):" + notificacao + "\n");
 	}
+        
+        
+        /** Equals**/
+        @Override
+        public boolean equals (Object o){
+            if (this==o) return true;
+            if (o==null || this.getClass()!=o.getClass()) return false;
+            Apostador a = (Apostador)o;
+            return (this.betESScoins==a.getBetESScoins() && this.email.equals(a.getEmail()) && this.name.equals(a.getName()));
+        }
 
 
 }

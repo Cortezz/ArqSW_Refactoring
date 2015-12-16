@@ -29,10 +29,10 @@ public class BetESSAPI {
 	}
         
         //interface sobre Apostas
-
+        /*
 	public void registaAposta(Apostador apostador, Evento evento) {
 		evento.registaAposta(apostador);
-	}
+	}*/
         
         public void setResultadoDaAposta (Aposta a, Evento.Resultado r){
             a.setResultado(r);

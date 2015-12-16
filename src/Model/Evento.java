@@ -54,6 +54,7 @@ public class Evento implements Subject {
         public int getID() {return this.id;}
         public Odd getOdds () {return this.odds;}
         public Date getDataEvento () {return this.dataEvento;}
+        public Vector<Aposta> getListaApostas () {return this.listaApostas;}
         /** Setters **/ 
         public void setEquipa1(String equipa1) {this.equipa1 = equipa1;}
         public void setEquipa2(String equipa2) {this.equipa2 = equipa2;}
@@ -79,6 +80,7 @@ public class Evento implements Subject {
 		return true;
 	}
 
+        /*
 	public void registaAposta(Apostador apostador) {
 
 		Aposta aposta = new Aposta();
@@ -88,7 +90,11 @@ public class Evento implements Subject {
 
 		this.listaApostas.add(aposta);
 
-	}
+	}*/
+        
+        public void registaAposta (Aposta a){
+            this.listaApostas.add(a);
+        }
 
 	public boolean actualizaOdd(int odd1, int oddx, int odd2 ){
 		this.odds.setOddx(oddx);
@@ -139,5 +145,28 @@ public class Evento implements Subject {
 		this.odds.setOdd2(odd_2);
 		this.odds.setOddx(odd_x);
 	}
+        
+        
+       
+        
+        
+        
+        /**Equals**/
+        @Override
+        public boolean equals (Object o){
+            if (this==o) return true;
+            if (o==null || this.getClass()!=o.getClass()) return false;
+            Evento e = (Evento)o;
+            return (this.dataEvento.equals(e.getDataEvento()) && this.equipa1.equals(e.getEquipa1()) 
+                    && this.equipa2.equals(e.getEquipa2()) && this.id == e.getID() && this.odds.equals(e.getOdds()) 
+                    && this.resultado_final.equals(e.getResultadoFinal()) && ListaApostasEquals(e.getListaApostas()));
+        }
+        
+        private boolean ListaApostasEquals (Vector<Aposta> a){
+            if (this.listaApostas.size()!=a.size()) return false;
+            for (int i = 0; i<a.size(); i++)
+                if (!listaApostas.get(i).equals(a.get(i)))return false;
+            return true;
+        }
 
 }

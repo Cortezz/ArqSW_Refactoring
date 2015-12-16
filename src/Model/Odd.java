@@ -52,4 +52,14 @@ public class Odd {
 		newOdd.setOddx(this.oddx);
 		return newOdd;
 	}
+        
+        /** Equals**/
+        
+        @Override
+        public boolean equals (Object o){
+            if (o==this) return true;
+            if (o==null || o.getClass()!=this.getClass()) return false;
+            Odd odd = (Odd)o;
+            return (this.odd1==odd.getOdd1() && this.odd2==odd.getOdd2() && this.oddx == odd.getOddx());
+        }
 }
