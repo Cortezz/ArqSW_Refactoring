@@ -50,26 +50,26 @@ public class BetESSAPI {
 
 	public void viewEventos(){
 
-		ListIterator<Evento> listIterator = this.listaEventos.listIterator();
-		while (listIterator.hasNext()) {
-			System.out.println(listIterator.next().viewEvento());
-		}
+		HashMap<Integer, Evento> eventos = (HashMap)listaEventos.getListaEventos();
+		for (Evento e : eventos.values())
+                    eventoView.viewEvento(e);
+		
 	}
 
 	public Evento registaEvento(String equipa1, String equipa2) {
 
 		Evento aposta = new Evento(equipa1,equipa2, Date.from(Instant.now()));
-		this.listaEventos.add(aposta);
+		this.listaEventos.addEvento(aposta.getID(), aposta);
 		return aposta;
 	}
 
 	public Evento registaEvento() {
 
 
-		Evento newevento = new Evento();
+		Evento newevento;
 
-		newevento.viewCreateEvento();
-		this.listaEventos.addEvento(newevento);
+		newevento = eventoView.viewCreateEvento();
+		this.listaEventos.addEvento(newevento.getID(),newevento);
 		return newevento;
 	}
 
@@ -77,10 +77,9 @@ public class BetESSAPI {
 
 	public void viewApostadores(){
 
-		ListIterator<Apostador> lista = this.listaApostadores.listIterator();
-		while(lista.hasNext()){
-			System.out.println(lista.next());
-		}
+		HashMap<String, Apostador> apostadores = (HashMap)listaApostadores.getListaApostadores();
+		for (Apostador a : apostadores.values())
+                    apostadorView.viewApostador(a);
 	}
 
 	public Apostador registaApostador(String nome, String  email, double coins){
@@ -93,9 +92,9 @@ public class BetESSAPI {
 	public Apostador registaApostador() {
 
 
-		Apostador newuser = new Apostador();
-		newuser.viewCreateApostador();
-		this.listaApostadores.add(newuser);
+		Apostador newuser;
+		newuser = apostadorView.viewCreateApostador();
+		this.listaApostadores.addApostador(newuser.getEmail(),newuser);
 
 
 		return newuser;
@@ -103,16 +102,13 @@ public class BetESSAPI {
 
 	public Apostador actualizaApostador(Apostador apostador) {
 
-
-		apostador.viewUpdateApostador(apostador);
-
-
-		return apostador;
+		apostadorView.viewUpdateApostador(apostador);
+                return apostador;
 	}
 
 	public boolean deleteApostador(Apostador apostador){
-		apostador.viewDeleteApostador();
-		return this.listaApostadores.remove(apostador);
+		apostadorView.viewDeleteApostador(apostador);
+		return this.listaApostadores.removeApostador(apostador.getEmail(),apostador);
 
 	}
 

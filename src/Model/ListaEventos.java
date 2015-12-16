@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 
@@ -18,6 +19,10 @@ public class ListaEventos {
     public ListaEventos ()  {
         this.listaEventos = new HashMap<Integer,Evento>();
     }
+    
+    
+    /**Getters**/
+    public Map getListaEventos(){return listaEventos;  }
     
     /**
      * Adds an event.

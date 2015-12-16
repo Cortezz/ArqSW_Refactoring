@@ -22,38 +22,6 @@ public class EventoTest {
     public EventoTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    
-    /**
-     * Test of fechaEvento method, of class Evento.
-     */
-    @Test
-    public void testFechaEvento() {
-        System.out.println("fechaEvento");
-        char resultadofinal = ' ';
-        Evento instance = new Evento();
-        boolean expResult = false;
-        boolean result = instance.fechaEvento(resultadofinal);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
     /**
      * Test of registaAposta method, of class Evento.
      */

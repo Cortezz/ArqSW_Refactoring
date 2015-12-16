@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  *  Class whose purpose is to store betters.
@@ -18,6 +19,9 @@ public class ListaApostadores {
         this.listaApostadores = new HashMap<String,Apostador>();
     }
     
+    /**Getters*/
+    public Map getListaApostadores () { return listaApostadores;}
+     
     
     /**
      * Adds a punter to its punter list.
@@ -26,5 +30,9 @@ public class ListaApostadores {
      */
     public void addApostador (String email, Apostador a){
         this.listaApostadores.put(email,a);
+    }
+    
+    public boolean removeApostador (String email, Apostador a){
+        return this.listaApostadores.remove(email, a);
     }
 }
