@@ -68,14 +68,13 @@ public class EventoTest {
     @Test
     public void testActualizaOdd() {
         System.out.println("actualizaOdd");
-        int odd1 = 0;
-        int oddx = 0;
-        int odd2 = 0;
+        
         Evento e = new Evento ("FC Porto", "SC Braga", new Date());
+        Evento e2 = new Evento ("Real Madrid", "FC Barcelona", new Date());
+        
         e.actualizaOdd(4, 2, 3);
         
-        
-        assertEquals(expResult, result);
+        assertFalse("This should fail.",e.getOdds().equals(e2.getOdds()));
     }
 
     /**
@@ -89,20 +88,6 @@ public class EventoTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    /**
-     * Test of updateOdds method, of class Evento.
-     */
-    @Test
-    public void testUpdateOdds() {
-        System.out.println("updateOdds");
-        float odd_1 = 0.0F;
-        float odd_x = 0.0F;
-        float odd_2 = 0.0F;
-        Evento instance = new Evento();
-        instance.updateOdds(odd_1, odd_x, odd_2);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of getEquipa1 method, of class Evento.
@@ -110,12 +95,8 @@ public class EventoTest {
     @Test
     public void testGetEquipa1() {
         System.out.println("getEquipa1");
-        Evento instance = new Evento();
-        String expResult = "";
-        String result = instance.getEquipa1();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Evento e1 = new Evento ("FC Porto", "SC Braga", new Date());
+        assertEquals (e1.getEquipa1(),"FC Porto");
     }
 
     /**
@@ -123,28 +104,11 @@ public class EventoTest {
      */
     @Test
     public void testGetEquipa2() {
-        System.out.println("getEquipa2");
-        Evento instance = new Evento();
-        String expResult = "";
-        String result = instance.getEquipa2();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       System.out.println("getEquipa2");
+        Evento e1 = new Evento ("FC Porto", "SC Braga", new Date());
+        assertEquals (e1.getEquipa2(),"SC Braga");
     }
 
-    /**
-     * Test of getStatus method, of class Evento.
-     */
-    @Test
-    public void testGetStatus() {
-        System.out.println("getStatus");
-        Evento instance = new Evento();
-        boolean expResult = false;
-        boolean result = instance.getStatus();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of getResultadoFinal method, of class Evento.
@@ -152,69 +116,24 @@ public class EventoTest {
     @Test
     public void testGetResultadoFinal() {
         System.out.println("getResultadoFinal");
-        Evento instance = new Evento();
-        Resultado expResult = null;
-        Resultado result = instance.getResultadoFinal();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Evento e1 = new Evento ("FC Porto", "SC Braga", new Date());
+        e1.fechaEvento('x');
+        assertEquals(e1.getResultadoFinal(),Resultado.EMPATE);
     }
 
     /**
      * Test of getID method, of class Evento.
      */
     @Test
-    public void testGetID() {
-        System.out.println("getID");
-        Evento instance = new Evento();
-        int expResult = 0;
-        int result = instance.getID();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testIDAssingment() {
+        System.out.println("ID Assignment");
+        Evento e = new Evento ("FC Porto", "SC Braga", new Date());
+        Evento e2 = new Evento ("Real Madrid", "FC Barcelona", new Date());
+        
+        assertTrue("This should be true.", e.getID()==e2.getID()-1);
     }
 
-    /**
-     * Test of getOdds method, of class Evento.
-     */
-    @Test
-    public void testGetOdds() {
-        System.out.println("getOdds");
-        Evento instance = new Evento();
-        Odd expResult = null;
-        Odd result = instance.getOdds();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of getDataEvento method, of class Evento.
-     */
-    @Test
-    public void testGetDataEvento() {
-        System.out.println("getDataEvento");
-        Evento instance = new Evento();
-        Date expResult = null;
-        Date result = instance.getDataEvento();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getListaApostas method, of class Evento.
-     */
-    @Test
-    public void testGetListaApostas() {
-        System.out.println("getListaApostas");
-        Evento instance = new Evento();
-        Vector<Aposta> expResult = null;
-        Vector<Aposta> result = instance.getListaApostas();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of setEquipa1 method, of class Evento.
@@ -222,11 +141,9 @@ public class EventoTest {
     @Test
     public void testSetEquipa1() {
         System.out.println("setEquipa1");
-        String equipa1 = "";
-        Evento instance = new Evento();
-        instance.setEquipa1(equipa1);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Evento e = new Evento ("FC Porto", "SC Braga", new Date());
+        e.setEquipa1("FC Barcelona");
+        assertEquals("FC Barcelona", e.getEquipa1());
     }
 
     /**
@@ -235,25 +152,11 @@ public class EventoTest {
     @Test
     public void testSetEquipa2() {
         System.out.println("setEquipa2");
-        String equipa2 = "";
-        Evento instance = new Evento();
-        instance.setEquipa2(equipa2);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Evento e = new Evento ("FC Porto", "SC Braga", new Date());
+        e.setEquipa2("FC Barcelona");
+        assertEquals("FC Barcelona", e.getEquipa2());
     }
 
-    /**
-     * Test of setDataEvento method, of class Evento.
-     */
-    @Test
-    public void testSetDataEvento() {
-        System.out.println("setDataEvento");
-        Date dataEvento = null;
-        Evento instance = new Evento();
-        instance.setDataEvento(dataEvento);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of fechaEvento method, of class Evento.
@@ -261,40 +164,10 @@ public class EventoTest {
     @Test
     public void testFechaEvento() {
         System.out.println("fechaEvento");
-        char resultadofinal = ' ';
-        Evento instance = new Evento();
-        boolean expResult = false;
-        boolean result = instance.fechaEvento(resultadofinal);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setEstado method, of class Evento.
-     */
-    @Test
-    public void testSetEstado() {
-        System.out.println("setEstado");
-        Evento instance = new Evento();
-        instance.setEstado();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setOdds method, of class Evento.
-     */
-    @Test
-    public void testSetOdds() {
-        System.out.println("setOdds");
-        float odd_1 = 0.0F;
-        float odd_x = 0.0F;
-        float odd_2 = 0.0F;
-        Evento instance = new Evento();
-        instance.setOdds(odd_1, odd_x, odd_2);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Evento e1 = new Evento ("FC Porto", "SC Braga", new Date());
+        e1.fechaEvento('x');
+        assertEquals(e1.getStatus(),false);
+    
     }
 
 }

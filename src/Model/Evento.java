@@ -54,7 +54,8 @@ public class Evento implements Subject {
         public int getID() {return this.id;}
         public Odd getOdds () {return this.odds;}
         public Date getDataEvento () {return this.dataEvento;}
-        public Vector<Aposta> getListaApostas () {return this.listaApostas;}
+        public Vector<Aposta> getListaApostas () { return this.listaApostas; }
+        
         /** Setters **/ 
         public void setEquipa1(String equipa1) {this.equipa1 = equipa1;}
         public void setEquipa2(String equipa2) {this.equipa2 = equipa2;}
