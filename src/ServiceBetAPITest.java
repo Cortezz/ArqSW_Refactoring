@@ -7,6 +7,9 @@ public class ServiceBetAPITest {
 
     public static void main(String[] args) {
 
+        
+        
+        /*
         // criar casa de apostas
         BetESSAPI casaApostas = new BetESSAPI();
 
@@ -34,16 +37,20 @@ public class ServiceBetAPITest {
         // Registar apostas
         casaApostas.registaAposta(apostador1, evento1);
         casaApostas.registaAposta(apostador1, evento2);*/
-
-        // fechar eventos
+        /*
+        // fechar eventos 
         casaApostas.fechaEvento(evento1, 'x');
-        casaApostas.fechaEvento(evento2, 'x');
+        casaApostas.fechaEvento(evento2, 'x');*/
 
         // regsitar bookies
         // TODO - implementar funcionalidades de bookie
         // Bokkie bookie1 = casaApostas.registaBookie();
         // Evento evento1 = casaApostas.registaEvento(bookie1);
-        // casaApostas.fechaEvento(bookie, evento1);
+        // casaApostas.fechaEvento(bookie, evento1);*/
+        
+        BetESSAPI betESS = new BetESSAPI(); 
+        Evento e = betESS.registaEvento();
+        betESS.viewEventos();
 
 
 

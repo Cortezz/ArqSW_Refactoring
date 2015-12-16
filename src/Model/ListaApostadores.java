@@ -20,7 +20,7 @@ public class ListaApostadores {
     }
     
     /**Getters*/
-    public Map getListaApostadores () { return listaApostadores;}
+    public HashMap getListaApostadores () { return listaApostadores;}
      
     
     /**
@@ -40,5 +40,28 @@ public class ListaApostadores {
      */
     public boolean removeApostador (String email, Apostador a){
         return this.listaApostadores.remove(email, a);
+    }
+    
+    
+    /**Equals**/
+    @Override
+    public boolean equals (Object o){
+        if (this==o) return true;
+        if (o==null || o.getClass()!=this.getClass()) return false;
+        ListaApostadores la = (ListaApostadores)o;
+        return (listaApostadoresEquals(la.getListaApostadores()));
+    }
+    
+    public boolean listaApostadoresEquals (HashMap<String,Apostador> la) {
+        if (listaApostadores.size()!=la.size()) return false;
+        for (Map.Entry<String,Apostador> entry : listaApostadores.entrySet())
+            if (la.containsKey(entry.getKey())) 
+            {
+                if (!la.get(entry.getKey()).equals(entry.getValue()))
+                    return false;
+            }
+            else return false;
+        return true;
+               
     }
 }

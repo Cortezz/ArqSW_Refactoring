@@ -52,7 +52,7 @@ public class Evento implements Subject {
 		this.equipa1 = null;
 		this.equipa2 = null;
 		this.isOpen = false;
-		this.resultado_final = null;
+		//this.resultado_final = null;
 		this.dataEvento = null;
 		this.id=uniqueId.getAndIncrement();
 		this.odds = new Odd();

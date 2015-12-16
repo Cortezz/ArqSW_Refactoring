@@ -39,15 +39,15 @@ public class EventoView {
      * @return ToString-esque appearance.
      */
     public String viewEvento(Evento e) {
-		return "Evento{" +
-				"equipa1='" + e.getEquipa1() + '\'' +
-				", equipa2='" + e.getEquipa2() + '\'' +
-				", resultado_final=" + e.getResultadoFinal() +
-				", estado=" + e.getStatus() +
-				", data da aposta" + e.getDataEvento().toString() +
-				", ultima odd" + e.getOdds().toString()+
-				'}';
-	}
+        return "Evento{" +
+            "equipa1='" + e.getEquipa1() + '\'' +
+            ", equipa2='" + e.getEquipa2() + '\'' +
+            ", resultado_final=" + e.getResultadoFinal() +
+            ", estado=" + e.getStatus() +
+            ", data da aposta" + e.getDataEvento().toString() +
+            ", ultima odd" + e.getOdds().toString()+
+            '}';
+}
 
     
     
@@ -57,7 +57,7 @@ public class EventoView {
      */
     public Evento viewCreateEvento(){
 
-        Evento ev = null;
+        Evento ev = new Evento();
         String readinput;
         this.out.print("Introduza as equipas participantes no evento: (Equipa1, Equipa2, DataEvento)\n");
         try {
@@ -66,8 +66,10 @@ public class EventoView {
             ev.setEquipa2(tokens[1]);
             ev.setEquipa1(tokens[0]);
             ev.setDataEvento(Date.from(Instant.now()));
+            return ev;
         } catch (IOException e) {e.printStackTrace();}
-        return ev;
+        return null;
+        
     }
 
     /**

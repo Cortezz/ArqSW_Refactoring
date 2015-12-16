@@ -22,7 +22,7 @@ public class ListaEventos {
     
     
     /**Getters**/
-    public Map getListaEventos(){return listaEventos;  }
+    public HashMap<Integer,Evento> getListaEventos(){return listaEventos;  }
     
     /**
      * Adds an event.
@@ -31,6 +31,28 @@ public class ListaEventos {
      */
     public void addEvento (int id, Evento e) {
         listaEventos.put(id,e);
+    }
+    
+    /**Equals**/
+    @Override
+    public boolean equals (Object o){
+        if (this==o) return true;
+        if (o==null || o.getClass()!=this.getClass()) return false;
+        ListaEventos le = (ListaEventos)o;
+        return (listaEventosEquals(le.getListaEventos()));
+    }
+    
+    public boolean listaEventosEquals (HashMap<Integer,Evento> le) {
+        if (listaEventos.size()!=le.size()) return false;
+        for (Map.Entry<Integer,Evento> entry : listaEventos.entrySet())
+            if (le.containsKey(entry.getKey())) 
+            {
+                if (!le.get(entry.getKey()).equals(entry.getValue()))
+                    return false;
+            }
+            else return false;
+        return true;
+               
     }
     
 }
