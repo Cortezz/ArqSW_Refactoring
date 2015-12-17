@@ -9,6 +9,7 @@ public class BetESSAPI {
 
 	private ListaEventos listaEventos;
 	private ListaApostadores listaApostadores;
+        private ListaBookies listaBookies;
         
 	private double betESStotal;
 	private String name;
@@ -21,6 +22,7 @@ public class BetESSAPI {
 		this.betESStotal = 0;
 		this.listaEventos = new ListaEventos();
 		this.listaApostadores = new ListaApostadores();
+                this.listaBookies = new ListaBookies();
 		this.name = "BetESSAPI";
                 this.apostadorView = new ApostadorView(this);
                 this.eventoView = new EventoView(this);
@@ -172,7 +174,8 @@ public class BetESSAPI {
             listaApostadores.removeApostador(apostador.getEmail());
 	}
 
-	// Interface sobre Bookies
+                    /*** Bookies ***/
+        
 
 	// TO-DO
 
