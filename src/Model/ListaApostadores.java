@@ -35,11 +35,9 @@ public class ListaApostadores {
     /**
      * Removes a punter.
      * @param email E-mail of the punter.
-     * @param a Instance of the punter.
-     * @return True if the operation is successful, false otherwise.
      */
-    public boolean removeApostador (String email, Apostador a){
-        return this.listaApostadores.remove(email, a);
+    public void removeApostador (String email){
+        listaApostadores.remove(email);
     }
     
     

@@ -47,18 +47,21 @@ public class EventoTest {
     @Test
     public void testRegistaAposta() {
       System.out.println("registaAposta");
+      //Creates a punter and a bet
       Apostador a = new Apostador ("José Felisberto", "Felisberto@gmail.com", 5);
       Aposta ap = new Aposta();
+      //Associates bet with punter.
       ap.setApostador(a);
       ap.setResultado(Resultado.VITORIA);
       ap.setM_aposta(0.5f);
       ap.setOdd_fixada(new Odd());
+      //Creates an event
       Evento e = new Evento ("FC Porto", "SC Braga", new Date());
       e.setOdds(1.2f, 4.4f, 6f);
+      //Adds the bet
       e.registaAposta(ap);
-      
-      
       Vector<Aposta> apostas = e.getListaApostas();
+      //List size must be 1
       assertEquals(apostas.size(),1);
     }
 
@@ -66,14 +69,14 @@ public class EventoTest {
      * Test of actualizaOdd method, of class Evento.
      */
     @Test
-    public void testActualizaOdd() {
-        System.out.println("actualizaOdd");
+    public void testUpdateOdds() {
+        System.out.println("updateOdds");
         
         Evento e = new Evento ("FC Porto", "SC Braga", new Date());
         Evento e2 = new Evento ("Real Madrid", "FC Barcelona", new Date());
         
-        e.actualizaOdd(4, 2, 3);
-        
+        e.updateOdds(4, 2, 3);
+        //Odds from both events should be different
         assertFalse("This should fail.",e.getOdds().equals(e2.getOdds()));
     }
 

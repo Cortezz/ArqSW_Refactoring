@@ -3,7 +3,6 @@ package Controller;
 
 import Model.*;
 import View.*;
-import java.time.Instant;
 import java.util.*;
 
 public class BetESSAPI {
@@ -28,102 +27,147 @@ public class BetESSAPI {
                 this.apostaView = new ApostaView(this);
 	}
         
-        //interface sobre Apostas
-        /*
-	public void registaAposta(Apostador apostador, Evento evento) {
-		evento.registaAposta(apostador);
-	}*/
+                                /******* APOSTAS ***********/
+        /**
+         * CRUD - Create method.
+         * @param evento Event which the bet belongs to.
+         */
+	public void registaAposta(Evento evento) {
+            Aposta a = apostaView.viewCreateAposta();
+            evento.registaAposta(a);
+	}
+        
+        /**
+         * CRUD - Read method.
+         * @param a Bet to be read.
+         * @return String which represents the bet.
+         */
+        public String detalhesAposta (Aposta a){
+            return apostaView.viewAposta(a);
+        }
+        
+        /**
+         * CRUD - Update method.
+         * @param a Bet to be updated.
+         */
+        public void updateAposta (Aposta a){
+            apostaView.viewUpdateAposta(a);
+        }
         
         public void setResultadoDaAposta (Aposta a, Evento.Resultado r){
             a.setResultado(r);
         }
 
-	// Interface sobre Eventos
+                                /******* EVENTOS ***********/
 
-	public boolean actualizaOdd(Evento evento, int odd_1, int odd_x, int odd_2){
-		return evento.actualizaOdd(odd_1,odd_x,odd_2);
+        /**
+         * Updates the odds of an event.
+         * @param evento Event whose odds are to be updated.
+         * @param odd_1 Odds for a home win.
+         * @param odd_x Odds for a draw.
+         * @param odd_2 Odds for an away win.
+         * @return 
+         */
+	public boolean actualizaOdd(Evento evento, float odd_1, float odd_x, float odd_2){
+             evento.updateOdds(odd_1,odd_x,odd_2);
+             return true;
 	}
 
-	public boolean  fechaEvento(Evento evento, char resultado){
-		return evento.fechaEvento(resultado);
+        /**
+         * Closes an event, given an outcome.
+         * @param evento Event to be closed.
+         * @param resultado Outcome of the event.
+         */
+	public void  fechaEvento(Evento evento, char resultado){
+            evento.fechaEvento(resultado);
 	}
 
+        /**
+         * Method which prints information about all the events.
+         */
 	public void viewEventos(){
-
-		HashMap<Integer, Evento> eventos = (HashMap)listaEventos.getListaEventos();
-		for (Evento e : eventos.values())
-                    System.out.println(eventoView.viewEvento(e));
+            HashMap<Integer, Evento> eventos = (HashMap)listaEventos.getListaEventos();
+            for (Evento e : eventos.values())
+                System.out.println(eventoView.viewEvento(e));
 		
 	}
 
-	public Evento registaEvento(String equipa1, String equipa2) {
 
-		Evento aposta = new Evento(equipa1,equipa2, Date.from(Instant.now()));
-		this.listaEventos.addEvento(aposta.getID(), aposta);
-		return aposta;
-	}
-
+        /***
+         * CRUD - Create method.
+         * @return Created event.
+         */
 	public Evento registaEvento() {
-
-
-		Evento newevento;
-
-		newevento = eventoView.viewCreateEvento();
-		this.listaEventos.addEvento(newevento.getID(),newevento);
-		return newevento;
+            Evento newevento = eventoView.viewCreateEvento();
+            this.listaEventos.addEvento(newevento.getID(),newevento);
+            return newevento;
 	}
+        
+        /**
+         * CRUD - Update method.
+         * @param e Event to be updated.
+         */
+        public void updateEvento (Evento e){
+            eventoView.viewUpdateEvento(e);
+        }
+        
+        /**
+         * CRUD - Delete method.
+         * @param e Event to be removed.
+         */
+        public void deleteEvento (Evento e){
+            eventoView.viewDeleteEvento(e);
+            listaEventos.removeEvento(e.getID());
+        }
+        
+        /**
+         * CRUD - Read Method.
+         * @param e Event to be read.
+         */
+        public void detalhesEvento (Evento e){
+            System.out.println(eventoView.viewEvento(e));
+        }
 
-	// Interface sobre Apostadores
+        
+                                    /** Apostadores **/
 
+        /**
+         * Prints information about all the punters.
+         */
 	public void viewApostadores(){
-
-		HashMap<String, Apostador> apostadores = (HashMap)listaApostadores.getListaApostadores();
-		for (Apostador a : apostadores.values())
-                    apostadorView.viewApostador(a);
+            HashMap<String, Apostador> apostadores = (HashMap)listaApostadores.getListaApostadores();
+            for (Apostador a : apostadores.values())
+                System.out.println(apostadorView.viewApostador(a));
 	}
 
-	public Apostador registaApostador(String nome, String  email, double coins){
 
-		Apostador newuser = new Apostador(nome, email, coins);
-		listaApostadores.addApostador(email, newuser);
-		return newuser;
-	}
-
+        /**
+         * CRUD - Read Method.
+         * @return Punter that's going to be created.
+         */
 	public Apostador registaApostador() {
-
-
-		Apostador newuser;
-		newuser = apostadorView.viewCreateApostador();
-		this.listaApostadores.addApostador(newuser.getEmail(),newuser);
-
-
-		return newuser;
+            Apostador newuser = apostadorView.viewCreateApostador();
+            this.listaApostadores.addApostador(newuser.getEmail(),newuser);
+            return newuser;
 	}
 
-	public Apostador actualizaApostador(Apostador apostador) {
-
-		apostadorView.viewUpdateApostador(apostador);
-                return apostador;
+        /**
+         * CRUD - Update method.
+         * @param apostador Punter to be updated.
+         * @return 
+         */
+	public void actualizaApostador(Apostador apostador) {
+            apostadorView.viewUpdateApostador(apostador);
 	}
 
-	public boolean deleteApostador(Apostador apostador){
-		apostadorView.viewDeleteApostador(apostador);
-		return this.listaApostadores.removeApostador(apostador.getEmail(),apostador);
-
+	public void deleteApostador(Apostador apostador){
+            apostadorView.viewDeleteApostador(apostador);
+            listaApostadores.removeApostador(apostador.getEmail());
 	}
 
 	// Interface sobre Bookies
 
 	// TO-DO
-
-	// Objects view
-	@Override
-	public String toString() {
-		return "BetESSAPI{" +
-				"name=" + name +
-				", betESStotal=" + betESStotal +
-				'}';
-	}
 
 
 }

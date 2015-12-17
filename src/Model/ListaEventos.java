@@ -33,6 +33,14 @@ public class ListaEventos {
         listaEventos.put(id,e);
     }
     
+    /**
+     * Removes an event from its list.
+     * @param id Id of the event.
+     */
+    public void removeEvento (int id){
+        listaEventos.remove(id);
+    }
+    
     /**Equals**/
     @Override
     public boolean equals (Object o){

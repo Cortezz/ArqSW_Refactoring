@@ -75,6 +75,8 @@ public class Evento implements Subject {
         public void setEstado(boolean estado) {this.isOpen = estado;}
         public void setResultadoFinal (Evento.Resultado res) {this.resultado_final = res;}
         public void setID (int id ) {this.id = id;}
+        public void setOdds(float odd_1, float odd_x, float odd_2) { this.odds = new Odd(odd_1,odd_x,odd_2);}
+
 
         
         /**
@@ -116,19 +118,7 @@ public class Evento implements Subject {
             this.listaApostas.add(a);
         }
 
-        /**
-         * Updates the odds.
-         * @param odd1 Odds of a home win.
-         * @param oddx Odds of an away win.
-         * @param odd2 Odds of a draw.
-         * @return Boolean condition which represents the method's success.
-         */
-	public boolean actualizaOdd(int odd1, int oddx, int odd2 ){
-		this.odds.setOddx(oddx);
-		this.odds.setOdd1(odd1);
-		this.odds.setOdd2(odd2);
-		return true;
-	}
+        
 
 	public void setEstado() {
 		// TODO - implement Aposta.setEstado
@@ -165,16 +155,12 @@ public class Evento implements Subject {
 	}
 
         
-	public void setOdds(float odd_1, float odd_x, float odd_2) {
-		this.odds = new Odd(odd_1,odd_x,odd_2);
-	}
-
+	
 	public void updateOdds(float odd_1, float odd_x, float odd_2){
 	    this.odds.setOdd1(odd_1);
 		this.odds.setOdd2(odd_2);
 		this.odds.setOddx(odd_x);
 	}
-        
         
        
         
