@@ -16,6 +16,7 @@ public class BetESSAPI {
         private ApostaView apostaView;
         private EventoView eventoView;
         private ApostadorView apostadorView;
+        private BookieView bookieView;
 
 	public BetESSAPI() {
             
@@ -27,6 +28,7 @@ public class BetESSAPI {
                 this.apostadorView = new ApostadorView(this);
                 this.eventoView = new EventoView(this);
                 this.apostaView = new ApostaView(this);
+                this.bookieView = new BookieView(this);
 	}
         
                                 /******* APOSTAS ***********/
@@ -176,8 +178,43 @@ public class BetESSAPI {
 
                     /*** Bookies ***/
         
+        /**
+         * CRUD - Create method.
+         * @return Instance of a bookie.
+         */
+        public Bookie registaBookie (){
+            Bookie b = bookieView.viewCreateBookie();
+            listaBookies.addBookie(b.getNome(), b);
+            return b;
+        }
+        
+        /**
+         * CRUD - Update method.
+         * @param b Instance of the bookie to be updated.
+         */
+        public void actualizaBookie (Bookie b){
+            listaBookies.removeBookie(b.getNome());
+            bookieView.viewUpdateBookie(b);
+            listaBookies.addBookie(b.getNome(), b);
+        }
+        
+        /**
+         * CRUD - Read method.
+         * @param b Instance of the bookie to be read.
+         */
+        public void detalhesBookie (Bookie b){
+            System.out.println(bookieView.viewBookie(b));
+        }
+        
+        /**
+         * CRUD - Delete method.
+         * @param b 
+         */
+        public void deleteBookie (Bookie b){
+            listaBookies.removeBookie(b.getNome());
+            bookieView.viewDeleteAposta(b);
+        }
 
-	// TO-DO
 
         
 }
