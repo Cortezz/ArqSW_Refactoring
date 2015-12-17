@@ -6,6 +6,13 @@
 package View;
 
 import Model.Evento;
+import Model.Odd;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.time.Instant;
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,13 +51,27 @@ public class EventoViewTest {
     @Test
     public void testViewEvento() {
         System.out.println("viewEvento");
-        Evento e = null;
-        EventoView instance = null;
-        String expResult = "";
-        String result = instance.viewEvento(e);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        EventoView ev = new EventoView();
+        Evento e1 = new Evento("FC Porto", "SC Braga", new Date());
+        Evento e2 = new Evento("FC Porto", "SC Braga", new Date());
+        e1.setOdds(1,2,3);
+        e2.setOdds(1, 2, 3);
+        assertEquals(ev.viewEvento(e1), ev.viewEvento(e2)); 
+    }
+    
+    
+    /**
+     * 2nd test of method testViewEvento, from class EventoView.
+     */
+    @Test
+    public void testViewEvento2 (){
+        System.out.println("viewEvento");
+        EventoView ev = new EventoView();
+        Evento e1 = new Evento("FC Porto", "SC Braga", new Date());
+        Evento e2 = new Evento("FC Porto", "SC Braga", new Date());
+        e1.setOdds(1,2,3);
+        e2.setOdds(3,2,1);
+        assertFalse("This should be false.",ev.viewEvento(e1).equals(ev.viewEvento(e2))); 
     }
 
     /**
@@ -59,12 +80,33 @@ public class EventoViewTest {
     @Test
     public void testViewCreateEvento() {
         System.out.println("viewCreateEvento");
-        EventoView instance = null;
-        Evento expResult = null;
-        Evento result = instance.viewCreateEvento();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        EventoView ev = new EventoView();
+        Evento e1 = viewCreateEventoFakeInput("FC Porto","SC Braga");
+        Evento e2 = viewCreateEventoFakeInput("FC Porto","SC Braga");
+        e1.setOdds(1,2,3);
+        e2.setOdds(1,2,3);
+        e1.setResultadoFinal(Evento.Resultado.VITORIA);
+        e2.setResultadoFinal(Evento.Resultado.VITORIA);
+        Date date = new Date();
+        date.setTime(1234213);
+        e1.setDataEvento(date);
+        e2.setDataEvento(date);
+        e2.setID(e1.getID());
+        
+        assertEquals(e1,e2);
+    }
+    
+    @Test
+    public void testViewCreateEvento2() {
+        
+        System.out.println("viewCreateEvento");
+        
+        Evento e1 = viewCreateEventoFakeInput("FC Porto","SC Braga");
+        Evento e2 = viewCreateEventoFakeInput("SC Braga","FC Porto");
+        e1.setOdds(1,2,3);
+        e2.setOdds(1,2,3);
+        assertFalse("This should be false", e1.equals(e2));
+        
     }
 
     /**
@@ -73,24 +115,68 @@ public class EventoViewTest {
     @Test
     public void testViewUpdateEvento() {
         System.out.println("viewUpdateEvento");
-        Evento ev = null;
-        EventoView instance = null;
-        instance.viewUpdateEvento(ev);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Date date = new Date(123423);
+        Evento e1 = new Evento ("FC Porto", "SC Braga",date);
+        Evento e2 = new Evento ("FC Barcelona","Real Madrid",date);
+        e1.setResultadoFinal(Evento.Resultado.VITORIA);
+        e2.setResultadoFinal(Evento.Resultado.VITORIA);
+        e1.setOdds(1,2,3);
+        e2.setOdds(1, 2, 3);
+        e2.setID(e1.getID());
+        viewUpdateEventoFakeInput(e1,"FC Barcelona", "Real Madrid");
+        e1.setDataEvento(date);
+        assertEquals(e1,e2);
+    }
+    
+    
+    /**
+     * Similar method to viewCreateEquipa but with fake input instead.
+     * @param equipa1 Name of the home team.
+     * @param equipa2 Name of the away team.
+     * @return The event created.
+     */
+    public Evento viewCreateEventoFakeInput(String equipa1, String equipa2){
+
+        Evento ev = new Evento();
+        String readinput;
+        String data = equipa1+","+equipa2;
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Introduza as equipas participantes no evento: (Equipa1, Equipa2, DataEvento)\n");
+        
+        try {
+            readinput = in.readLine();
+            String[] tokens = readinput.split(",");
+            ev.setEquipa2(tokens[1]);
+            ev.setEquipa1(tokens[0]);
+            ev.setDataEvento(Date.from(Instant.now()));
+            return ev;
+        } catch (IOException e) {e.printStackTrace();}
+        return null;
+        
+    }
+    
+    /**
+     * Similar method to viewUpdateEvento but with fake input instead.
+     * @param ev Instance of the event to be updated.
+     * @param equipa1 Name of the home team.
+     * @param equipa2 Name of the away team.
+     */
+    public void viewUpdateEventoFakeInput(Evento ev, String equipa1, String equipa2){
+        String readinput;
+        String data = equipa1+","+equipa2;
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Introduza as equipas participantes no evento: (Equipa1, Equipa2, DataEvento)\n");
+        try {
+            readinput = in.readLine();
+            String[] tokens = readinput.split(",");
+            ev.setEquipa2(tokens[1]);
+            ev.setEquipa1(tokens[0]);
+            ev.setDataEvento(Date.from(Instant.now()));
+        } catch (IOException e) {e.printStackTrace();}
     }
 
-    /**
-     * Test of viewDeleteEvento method, of class EventoView.
-     */
-    @Test
-    public void testViewDeleteEvento() {
-        System.out.println("viewDeleteEvento");
-        Evento e = null;
-        EventoView instance = null;
-        instance.viewDeleteEvento(e);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
     
 }

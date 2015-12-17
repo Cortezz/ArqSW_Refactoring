@@ -28,6 +28,14 @@ public class ApostaView {
         this.controller = betESS;
     }
     
+    /** 
+     * Empty Constructor.
+     */
+    public ApostaView (){
+        this.in = new BufferedReader(new InputStreamReader(System.in));
+	this.out = System.out;
+    }
+    
     
     /** Métodos CRUD **/
     

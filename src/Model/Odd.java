@@ -59,4 +59,13 @@ public class Odd {
             Odd odd = (Odd)o;
             return (this.odd1==odd.getOdd1() && this.odd2==odd.getOdd2() && this.oddx == odd.getOddx());
         }
+        
+        @Override
+        public String toString () {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Odd 1 - ").append(odd1).append("\n");
+            sb.append("Odd x - ").append(oddx).append("\n");
+            sb.append("Odd 2 - ").append(odd2).append("\n");
+            return sb.toString();
+        }
 }

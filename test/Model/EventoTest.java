@@ -169,5 +169,19 @@ public class EventoTest {
         assertEquals(e1.getStatus(),false);
     
     }
+    
+    @Test
+    public void testEquals(){
+        System.out.println("equals");
+        Date date = new Date(12341234);
+        Evento e1 = new Evento("FC Porto", "SC Braga",date);
+        Evento e2 = new Evento("FC Porto", "SC Braga",date);
+        
+        e1.setResultadoFinal(Resultado.VITORIA);
+        e2.setResultadoFinal(Resultado.VITORIA);
+        e2.setID(e1.getID());
+        
+        assertTrue("This should be true.", e1.equals(e2));
+    }
 
 }

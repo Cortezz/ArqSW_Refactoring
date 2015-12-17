@@ -192,7 +192,6 @@ public class ApostaViewTest {
         try {
             readinput = in.readLine();
             String[] tokens = readinput.split(",");
-            System.out.println(tokens.length);
             switch (tokens[1]) {
                     case "1":
                             a.setResultado(Evento.Resultado.VITORIA);

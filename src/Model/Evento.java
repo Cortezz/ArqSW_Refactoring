@@ -52,7 +52,6 @@ public class Evento implements Subject {
 		this.equipa1 = null;
 		this.equipa2 = null;
 		this.isOpen = false;
-		//this.resultado_final = null;
 		this.dataEvento = null;
 		this.id=uniqueId.getAndIncrement();
 		this.odds = new Odd();
@@ -73,6 +72,9 @@ public class Evento implements Subject {
         public void setEquipa1(String equipa1) {this.equipa1 = equipa1;}
         public void setEquipa2(String equipa2) {this.equipa2 = equipa2;}
         public void setDataEvento(Date dataEvento) {this.dataEvento = dataEvento;}
+        public void setEstado(boolean estado) {this.isOpen = estado;}
+        public void setResultadoFinal (Evento.Resultado res) {this.resultado_final = res;}
+        public void setID (int id ) {this.id = id;}
 
         
         /**

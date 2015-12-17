@@ -100,6 +100,14 @@ public class ApostadorViewTest {
     }
     
     
+    
+    /**
+     * Similar method to viewCreateApostador, but with fake input instead.
+     * @param nome Name of the punter.
+     * @param email E-mail of the punter.
+     * @param coins Amount of coins the punter has.
+     * @return The punter created.
+     */
     public Apostador viewCreateApostadorFakeInput(String nome, String email, String coins){
 
             String readinput;

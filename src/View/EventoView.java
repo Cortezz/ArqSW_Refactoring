@@ -29,6 +29,14 @@ public class EventoView {
         this.controller = betESS; 
     }
     
+    /**
+     * Empty Constructor.
+     */
+    public EventoView(){
+        this.in = new BufferedReader(new InputStreamReader(System.in));
+	this.out = System.out;
+    }
+    
     
     /** CRUD Methods **/
     
