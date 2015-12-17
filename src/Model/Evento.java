@@ -127,7 +127,7 @@ public class Evento implements Subject {
 
         // BAD SMELLS!
 	public void notifyApostadores() {
-		int premio = 0;
+		float premio = 0;
 		if (!this.isOpen){
 			Enumeration<Aposta> lista_apostas = this.listaApostas.elements();
 			while (lista_apostas.hasMoreElements()) {
@@ -137,15 +137,13 @@ public class Evento implements Subject {
 
 					switch (aposta.getResultado()) {
 						case VITORIA:
-							premio = (int) (aposta.getM_aposta() * aposta.getOdd_fixada().getOdd1());
+							premio = (float) (aposta.getM_aposta() * aposta.getOdd_fixada().getOdd1());
 							break;
 						case EMPATE:
-							premio = (int) (aposta.getM_aposta() * aposta.getOdd_fixada().getOddx());
-							;
+							premio = (float) (aposta.getM_aposta() * aposta.getOdd_fixada().getOddx());
 							break;
 						case DERROTA:
-							premio = (int) (aposta.getM_aposta() * aposta.getOdd_fixada().getOdd2());
-							;
+							premio = (float) (aposta.getM_aposta() * aposta.getOdd_fixada().getOdd2());
 							break;
 					}
 				}
@@ -158,8 +156,8 @@ public class Evento implements Subject {
 	
 	public void updateOdds(float odd_1, float odd_x, float odd_2){
 	    this.odds.setOdd1(odd_1);
-		this.odds.setOdd2(odd_2);
-		this.odds.setOddx(odd_x);
+            this.odds.setOdd2(odd_2);
+            this.odds.setOddx(odd_x);
 	}
         
        

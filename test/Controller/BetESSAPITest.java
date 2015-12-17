@@ -76,36 +76,16 @@ public class BetESSAPITest {
     public void testRegistaEvento_0args() {
         System.out.println("registaEvento");
         BetESSAPI instance = new BetESSAPI();
-        Evento expResult = null;
-        Evento result = instance.registaEvento();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Evento e = instance.registaEvento();
     }
     
 
-    /**
-     * Test of registaApostador method, of class BetESSAPI.
-     */
-    @Test
-    public void testRegistaApostador_3args() {
-        System.out.println("registaApostador");
-        String nome = "";
-        String email = "";
-        double coins = 0.0;
-        BetESSAPI instance = new BetESSAPI();
-        Apostador expResult = null;
-        Apostador result = instance.registaApostador(nome, email, coins);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of registaApostador method, of class BetESSAPI.
      */
     @Test
-    public void testRegistaApostador_0args() {
+    public void testRegistaApostador() {
         System.out.println("registaApostador");
         BetESSAPI instance = new BetESSAPI();
         Apostador expResult = null;
@@ -121,13 +101,6 @@ public class BetESSAPITest {
     @Test
     public void testActualizaApostador() {
         System.out.println("actualizaApostador");
-        Apostador apostador = null;
-        BetESSAPI instance = new BetESSAPI();
-        Apostador expResult = null;
-        Apostador result = instance.actualizaApostador(apostador);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -136,11 +109,6 @@ public class BetESSAPITest {
     @Test
     public void testDeleteApostador() {
         System.out.println("deleteApostador");
-        Apostador apostador = null;
-        BetESSAPI instance = new BetESSAPI();
-        boolean expResult = false;
-        boolean result = instance.deleteApostador(apostador);
-        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

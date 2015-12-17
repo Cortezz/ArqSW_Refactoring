@@ -32,9 +32,12 @@ public class BetESSAPI {
          * CRUD - Create method.
          * @param evento Event which the bet belongs to.
          */
-	public void registaAposta(Evento evento) {
+	public Aposta registaAposta(Evento evento, Apostador apostador) {
             Aposta a = apostaView.viewCreateAposta();
+            a.setApostador(apostador);
+            a.setOdd_fixada(evento.getOdds());
             evento.registaAposta(a);
+            return a;
 	}
         
         /**
@@ -108,7 +111,9 @@ public class BetESSAPI {
          * @param e Event to be updated.
          */
         public void updateEvento (Evento e){
+            listaEventos.removeEvento(e.getID());
             eventoView.viewUpdateEvento(e);
+            listaEventos.addEvento(e.getID(), e);
         }
         
         /**
@@ -156,8 +161,10 @@ public class BetESSAPI {
          * @param apostador Punter to be updated.
          * @return 
          */
-	public void actualizaApostador(Apostador apostador) {
+            public void actualizaApostador(Apostador apostador) {
+            listaApostadores.removeApostador(apostador.getEmail());
             apostadorView.viewUpdateApostador(apostador);
+            listaApostadores.addApostador(apostador.getEmail(), apostador);
 	}
 
 	public void deleteApostador(Apostador apostador){
@@ -169,5 +176,5 @@ public class BetESSAPI {
 
 	// TO-DO
 
-
+        
 }
