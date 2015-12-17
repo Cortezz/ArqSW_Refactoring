@@ -95,9 +95,9 @@ public class ServiceBetAPITest {
         //Read
         System.out.println(apv.viewAposta(ap1));
         //Update
-        apv.UpdateAposta(ap1);
+        apv.viewUpdateAposta(ap1);
         //Delete
-        apv.deleteAposta(ap1);
+        apv.viewDeleteAposta(ap1);
         
         
 

@@ -54,7 +54,6 @@ public class ApostadorView {
                     a.setName(tokens[0]);
                     a.setEmail(tokens[1]);
                     a.setBetESScoins(Double.parseDouble(tokens[2]));
-                    this.viewApostador(a);
                     return a;
             } catch (IOException e) {e.printStackTrace();}
             return null;

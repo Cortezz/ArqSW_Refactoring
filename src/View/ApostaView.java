@@ -82,7 +82,7 @@ public class ApostaView {
      * View - Update Method.
      * @param a Bet to be updated.
      */
-    public void UpdateAposta (Aposta a){
+    public void viewUpdateAposta (Aposta a){
         String readinput;
 	this.out.println("Introduza o resultado e o montante a apostar: montante, resultado\n");
         try {
@@ -108,7 +108,7 @@ public class ApostaView {
      * View - Delete Method.
      * @param a Bet to be deleted.
      */
-    public void deleteAposta (Aposta a){
+    public void viewDeleteAposta (Aposta a){
         this.out.println("Remover Aposta"+this.viewAposta(a));
         
     }

@@ -20,6 +20,7 @@ public class Apostador implements Observer{
 	public Apostador(String name, String email, double betESScoins) {
 		this.email = email;
 		this.name = name;
+                this.betESScoins = betESScoins;
 	}
 
         /**

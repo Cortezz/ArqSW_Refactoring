@@ -64,4 +64,19 @@ public class ApostadorTest {
         assertTrue("This should be true", a1.equals(a2));
     }
     
+    
+    /**
+     * 2nd test of equals method, of class Apostador.
+     */
+    @Test
+    public void testeEquals2(){
+        System.out.println("equals");
+        
+        Apostador a1 = new Apostador("Filipe", "jfilipe@gmail.com", 1000);
+        Apostador a2 = new Apostador("José Filipe", "jfilipe@gmail.com", 1000);
+        
+        assertFalse("This should be false", a1.equals(a2));
+        
+    }
+    
 }
