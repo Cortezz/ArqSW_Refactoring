@@ -69,32 +69,7 @@ public class BetESSAPITest {
     }
     
 
-    /**
-     * Test of registaEvento method, of class BetESSAPI.
-     */
-    @Test
-    public void testRegistaEvento_0args() {
-        System.out.println("registaEvento");
-        BetESSAPI instance = new BetESSAPI();
-        Evento e = instance.registaEvento();
-    }
     
-
-
-    /**
-     * Test of registaApostador method, of class BetESSAPI.
-     */
-    @Test
-    public void testRegistaApostador() {
-        System.out.println("registaApostador");
-        BetESSAPI instance = new BetESSAPI();
-        Apostador expResult = null;
-        Apostador result = instance.registaApostador();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
     /**
      * Test of actualizaApostador method, of class BetESSAPI.
      */
@@ -102,15 +77,4 @@ public class BetESSAPITest {
     public void testActualizaApostador() {
         System.out.println("actualizaApostador");
     }
-
-    /**
-     * Test of deleteApostador method, of class BetESSAPI.
-     */
-    @Test
-    public void testDeleteApostador() {
-        System.out.println("deleteApostador");
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
 }

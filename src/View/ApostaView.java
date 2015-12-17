@@ -37,7 +37,7 @@ public class ApostaView {
     }
     
     
-    /** Métodos CRUD **/
+    /** CRUD Methods **/
     
     
     /**
