@@ -7,8 +7,16 @@ package Model;
 
 import Model.*;
 import Model.Evento.Resultado;
+import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -86,10 +94,105 @@ public class EventoTest {
     @Test
     public void testNotifyApostadores() {
         System.out.println("notifyApostadores");
-        Evento instance = new Evento();
-        instance.notifyApostadores();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Evento e1 = new Evento("FC Porto","SC Braga", new Date());
+        e1.setOdds(1, 2, 3);
+        Apostador a1 = new Apostador("Josa","j@gmail.com",1000);
+        Apostador a2 = new Apostador("Filipe","f@gmail.com",1000);
+        
+        Aposta ap1 = new Aposta(a1, 50, 'x', e1.getOdds());
+        Aposta ap2 = new Aposta(a2, 50, '1', e1.getOdds());
+        Aposta ap3 = new Aposta(a2, 100,'x', e1.getOdds());
+        Aposta ap4 = new Aposta(a1, 150,'2', e1.getOdds());
+        Aposta ap5 = new Aposta(a2, 200,'2', e1.getOdds());
+        Aposta ap6 = new Aposta(a1,1500,'x',e1.getOdds());
+        
+        e1.registaAposta(ap1);
+        e1.registaAposta(ap2);
+        e1.registaAposta(ap3);
+        e1.registaAposta(ap4);
+        e1.registaAposta(ap5);
+        e1.registaAposta(ap6);
+        
+        
+        PrintStream original = new PrintStream(System.out); 
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        e1.fechaEvento('x');
+        
+        //Array List with the name and prize
+        ArrayList<String> tokens = getTokens(outContent.toString(),original);
+        //"Artificial array"
+        ArrayList<String> tokens2 = new ArrayList<String>();
+         //#1
+        tokens2.add("Josa");
+        tokens2.add("100.0");
+        //#2
+        tokens2.add("Filipe");
+        tokens2.add("0.0");
+        //#3
+        tokens2.add("Filipe");
+        tokens2.add("200.0");
+        //#4
+        tokens2.add("Josa");
+        tokens2.add("0.0");
+        //#5
+        tokens2.add("Filipe");
+        tokens2.add("0.0");
+        //#6
+        tokens2.add("Josa");
+        tokens2.add("3000.0");
+        
+        original.println(printArray(tokens));
+        original.println(printArray(tokens2));
+        
+        assertTrue("This should be true", arrayListEquals(tokens, tokens2));
+    }
+    
+    
+    
+    public ArrayList<String> getTokens (String s, PrintStream ps){
+        int inicio=0, fim=0,limit;
+        
+        String nome,f;
+        ArrayList<String> res = new ArrayList<>();
+        limit = charOccurrences(s,'\n')/3;
+        
+        s.split("\n\n");
+        for (int i=0; i<limit;i++){
+            nome = s.substring(s.indexOf("(",inicio) + 1, s.indexOf(")",inicio));
+            fim = s.indexOf("\n",s.indexOf(":",inicio));
+            f = s.substring(s.indexOf(":",inicio)+1, fim);
+            inicio = fim;
+            res.add(nome);
+            res.add(f);
+        }
+            
+        return res;
+    }
+    
+    public int charOccurrences (String s, char c){
+        int count = 0;
+        for(int i=0;i<s.length();i++)
+            if ((char)(s.charAt(i)) == c)
+                    count++;
+        
+        return count;
+        
+    }
+    
+    public boolean arrayListEquals (ArrayList<String> l1, ArrayList<String> l2) {
+        if (l1.size()!=l2.size()) return false;
+        for (int i=0;i<l1.size();i++)
+            if (!l1.get(i).equals(l2.get(i))) return false;
+        return true;
+     }
+    
+    public String printArray (ArrayList<String> l){
+        int i;
+        StringBuilder sb = new StringBuilder();
+        for (i=0;i<l.size();i++)
+            sb.append(i).append(" - ").append(l.get(i)).append("\n");
+        return sb.toString();
     }
 
     /**
@@ -186,5 +289,5 @@ public class EventoTest {
         
         assertTrue("This should be true.", e1.equals(e2));
     }
-
-}
+    
+} 

@@ -40,19 +40,6 @@ public class ApostadorTest {
     
 
     /**
-     * Test of update method, of class Apostador.
-     */
-    @Test
-    public void testUpdate() {
-        System.out.println("update");
-        String notificacao = "";
-        Apostador instance = new Apostador();
-        instance.update(notificacao);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of equals method, of class Apostador.
      */
     @Test

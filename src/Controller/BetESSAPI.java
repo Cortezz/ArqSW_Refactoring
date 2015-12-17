@@ -214,6 +214,8 @@ public class BetESSAPI {
             listaBookies.removeBookie(b.getNome());
             bookieView.viewDeleteAposta(b);
         }
+        
+        
 
 
         

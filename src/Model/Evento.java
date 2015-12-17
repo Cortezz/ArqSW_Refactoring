@@ -147,7 +147,8 @@ public class Evento implements Subject {
 							break;
 					}
 				}
-				aposta.getApostador().update(premio+"");
+                                else premio = 0;
+				aposta.getApostador().update(Float.toString(premio));
 			}
 		}
 	}
