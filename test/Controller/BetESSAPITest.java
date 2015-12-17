@@ -8,6 +8,7 @@ package Controller;
 import Model.Aposta;
 import Model.Apostador;
 import Model.Evento;
+import Model.Bookie;
 import Controller.BetESSAPI;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -63,7 +64,8 @@ public class BetESSAPITest {
         System.out.println("fechaEvento");
         Evento evento = new Evento();
         BetESSAPI controller = new BetESSAPI();
-        controller.fechaEvento(evento, '1');
+        Bookie b = new Bookie("José");
+        controller.fechaEvento(evento, '1',b);
         
         assertEquals(Evento.Resultado.VITORIA, evento.getResultadoFinal());
     }

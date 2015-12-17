@@ -79,8 +79,10 @@ public class BookieTest {
         Bookie instance = new Bookie("Leão");
         
         Evento e1 = new Evento("FC Porto","SC Braga", new Date(1241));
+        e1.setBookieCriouEvento(instance);
         instance.subscreveEvento(e1);
         Evento e2 = new Evento("FC Porto","SC Braga", new Date(1241));
+        e2.setBookieCriouEvento(instance);
         Evento e3 = instance.getEventosSubscritos().get(e1.getID());
         e3.setID(e2.getID());
         //Minor details

@@ -84,9 +84,11 @@ public class BetESSAPI {
          * Closes an event, given an outcome.
          * @param evento Event to be closed.
          * @param resultado Outcome of the event.
+         * @param b Instance of the bookie who closed the event.
          */
-	public void  fechaEvento(Evento evento, char resultado){
+	public void  fechaEvento(Evento evento, char resultado, Bookie b){
             evento.fechaEvento(resultado);
+            evento.setBookieFechouEvento(b);
 	}
 
         /**
@@ -100,15 +102,18 @@ public class BetESSAPI {
 	}
 
 
-        /***
-         * CRUD - Create method.
+        
+        /**
+         * CRUD - Create Method.
+         * @param b Instance of the bookie who created the event.
          * @return Created event.
          */
-	public Evento registaEvento() {
+        public Evento registaEvento (Bookie b){
             Evento newevento = eventoView.viewCreateEvento();
+            newevento.setBookieCriouEvento(b);
             this.listaEventos.addEvento(newevento.getID(),newevento);
             return newevento;
-	}
+        }
         
         /**
          * CRUD - Update method.

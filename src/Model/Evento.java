@@ -27,6 +27,8 @@ public class Evento implements Subject {
 	private Vector<Aposta> listaApostas;
 	private boolean isOpen;
 	private Odd odds;
+        private Bookie bookieCriouEvento;
+        private Bookie bookieFechouEvento;
 
         /**
          * Param constructor.
@@ -43,6 +45,8 @@ public class Evento implements Subject {
 		this.id=uniqueId.getAndIncrement();
 		this.odds = new Odd();
 		this.listaApostas = new Vector<Aposta>();
+                bookieCriouEvento = new Bookie();
+                bookieFechouEvento = new Bookie();
 	}
 
         /**
@@ -56,6 +60,8 @@ public class Evento implements Subject {
 		this.id=uniqueId.getAndIncrement();
 		this.odds = new Odd();
 		this.listaApostas = new Vector<Aposta>();
+                bookieCriouEvento = new Bookie();
+                bookieFechouEvento = new Bookie();
 	}
 
         /** Getters **/
@@ -67,6 +73,8 @@ public class Evento implements Subject {
         public Odd getOdds () {return this.odds;}
         public Date getDataEvento () {return this.dataEvento;}
         public Vector<Aposta> getListaApostas () { return this.listaApostas; }
+        public Bookie getBookieCriouEvento () {return this.bookieCriouEvento;}
+        public Bookie getBookieFechouEvento () {return this.bookieFechouEvento;}
         
         /** Setters **/ 
         public void setEquipa1(String equipa1) {this.equipa1 = equipa1;}
@@ -76,7 +84,8 @@ public class Evento implements Subject {
         public void setResultadoFinal (Evento.Resultado res) {this.resultado_final = res;}
         public void setID (int id ) {this.id = id;}
         public void setOdds(float odd_1, float odd_x, float odd_2) { this.odds = new Odd(odd_1,odd_x,odd_2);}
-
+        public void setBookieCriouEvento (Bookie b) {this.bookieCriouEvento = b;}
+        public void setBookieFechouEvento (Bookie b) {this.bookieFechouEvento = b;}
 
         
         /**
@@ -172,6 +181,7 @@ public class Evento implements Subject {
             if (o==null || this.getClass()!=o.getClass()) return false;
             Evento e = (Evento)o;
             return (this.dataEvento.equals(e.getDataEvento()) && this.equipa1.equals(e.getEquipa1()) 
+                    && this.bookieCriouEvento.equals(e.getBookieCriouEvento()) && this.bookieFechouEvento.equals((e.getBookieFechouEvento()))
                     && this.equipa2.equals(e.getEquipa2()) && this.id == e.getID() && this.odds.equals(e.getOdds()) 
                     && this.resultado_final.equals(e.getResultadoFinal()) && ListaApostasEquals(e.getListaApostas()));
         }
