@@ -124,32 +124,29 @@ public class Evento implements Subject {
 
 	}
 
-        // BAD SMELLS!
 	public void notifyApostadores() {
-		float premio = 0;
-		if (!this.isOpen){
-			Enumeration<Aposta> lista_apostas = this.listaApostas.elements();
-			while (lista_apostas.hasMoreElements()) {
-				Aposta aposta = lista_apostas.nextElement();
-
-				if (this.resultado_final == aposta.getResultado()) {
-
-					switch (aposta.getResultado()) {
-						case VITORIA:
-							premio = (aposta.getValor() * aposta.getOdd_fixada().getOdd1());
-							break;
-						case EMPATE:
-							premio = (aposta.getValor() * aposta.getOdd_fixada().getOddx());
-							break;
-						case DERROTA:
-							premio = (aposta.getValor() * aposta.getOdd_fixada().getOdd2());
-							break;
-					}
-				}
-                                else premio = 0;
-				aposta.getApostador().update(Float.toString(premio));
-			}
-		}
+            float premio = 0;
+            if (!this.isOpen){
+                Enumeration<Aposta> lista_apostas = this.listaApostas.elements();
+                while (lista_apostas.hasMoreElements()) {
+                    Aposta aposta = lista_apostas.nextElement();
+                    if (this.resultado_final == aposta.getResultado()) {
+                        switch (aposta.getResultado()) {
+                                case VITORIA:
+                                        premio = (aposta.getValor() * aposta.getOdd_fixada().getOdd1());
+                                        break;
+                                case EMPATE:
+                                        premio = (aposta.getValor() * aposta.getOdd_fixada().getOddx());
+                                        break;
+                                case DERROTA:
+                                        premio = (aposta.getValor() * aposta.getOdd_fixada().getOdd2());
+                                        break;
+                        }
+                    }
+                    else premio = 0;
+                    aposta.getApostador().update(Float.toString(premio));
+                }
+            }
 	}
 
         

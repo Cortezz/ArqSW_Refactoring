@@ -146,8 +146,45 @@ public class EventoTest {
         tokens2.add("Josa");
         tokens2.add("3000.0");
         
-        original.println(printArray(tokens));
-        original.println(printArray(tokens2));
+        assertTrue("This should be true", arrayListEquals(tokens, tokens2));
+    }
+    
+    /**
+     * 2nd Test of notifyApostadores method, of class Evento.
+     */
+    @Test
+    public void testNotifyApostadores2() {
+        System.out.println("notifyApostadores");
+        Evento e1 = new Evento("FC Porto","SC Braga", new Date());
+        e1.setOdds(1, 2, 3);
+        Apostador a1 = new Apostador("Josa","j@gmail.com",1000f);
+        Apostador a2 = new Apostador("Filipe","f@gmail.com",1000f);
+        
+        Evento.Resultado vitoria = Evento.Resultado.VITORIA;
+        Evento.Resultado derrota = Evento.Resultado.DERROTA;
+        
+        Aposta ap1 = new Aposta(a1, 50, vitoria, e1.getOdds());
+        Aposta ap2 = new Aposta(a2, 50, derrota, e1.getOdds());
+        
+        e1.registaAposta(ap1);
+        e1.registaAposta(ap2);
+        
+        
+        PrintStream original = new PrintStream(System.out); 
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        e1.fechaEvento(Evento.Resultado.EMPATE);
+        
+        //Array List with the name and prize
+        ArrayList<String> tokens = getTokens(outContent.toString(),original);
+        //"Artificial array"
+        ArrayList<String> tokens2 = new ArrayList<String>();
+         //#1
+        tokens2.add("Josa");
+        tokens2.add("0.0");
+        //#2
+        tokens2.add("Filipe");
+        tokens2.add("0.0");
         
         assertTrue("This should be true", arrayListEquals(tokens, tokens2));
     }
