@@ -56,7 +56,7 @@ public class EventoTest {
     public void testRegistaAposta() {
       System.out.println("registaAposta");
       //Creates a punter and a bet
-      Apostador a = new Apostador ("José Felisberto", "Felisberto@gmail.com", 5);
+      Apostador a = new Apostador ("José Felisberto", "Felisberto@gmail.com", 5f);
       Aposta ap = new Aposta();
       //Associates bet with punter.
       ap.setApostador(a);
@@ -96,8 +96,8 @@ public class EventoTest {
         System.out.println("notifyApostadores");
         Evento e1 = new Evento("FC Porto","SC Braga", new Date());
         e1.setOdds(1, 2, 3);
-        Apostador a1 = new Apostador("Josa","j@gmail.com",1000);
-        Apostador a2 = new Apostador("Filipe","f@gmail.com",1000);
+        Apostador a1 = new Apostador("Josa","j@gmail.com",1000f);
+        Apostador a2 = new Apostador("Filipe","f@gmail.com",1000f);
         
         Aposta ap1 = new Aposta(a1, 50, 'x', e1.getOdds());
         Aposta ap2 = new Aposta(a2, 50, '1', e1.getOdds());

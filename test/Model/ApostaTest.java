@@ -78,7 +78,7 @@ public class ApostaTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        Apostador jose = new Apostador ("jose", "jose@gmail.com", 1000);
+        Apostador jose = new Apostador ("jose", "jose@gmail.com", 1000f);
         Odd odd = new Odd(3,2,1);
         Aposta a1 = new Aposta(jose, 5f, '2', odd);
         Aposta a2 = new Aposta();

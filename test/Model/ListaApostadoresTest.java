@@ -47,7 +47,7 @@ public class ListaApostadoresTest {
         System.out.println("getListaApostadores");
         //adds a punter into a hashmap
         ListaApostadores instance = new ListaApostadores();
-        Apostador a = new Apostador("Jose","f@gmail.com",1000);
+        Apostador a = new Apostador("Jose","f@gmail.com",1000f);
         instance.addApostador(a.getEmail(), a);
         //Same punter into another hashmap
         HashMap<String,Apostador> test= new HashMap<>();
@@ -64,7 +64,7 @@ public class ListaApostadoresTest {
         System.out.println("addApostador");
         
         //adds a punter
-        Apostador a = new Apostador("Jose","f@gmail.com",1000);
+        Apostador a = new Apostador("Jose","f@gmail.com",1000f);
         ListaApostadores instance = new ListaApostadores();
         instance.addApostador(a.getEmail(),a);
         //list size must be 1
@@ -78,7 +78,7 @@ public class ListaApostadoresTest {
     public void testRemoveApostador() {
         System.out.println("removeApostador");
         
-        Apostador a = new Apostador("Jose","f@gmail.com",1000);
+        Apostador a = new Apostador("Jose","f@gmail.com",1000f);
         ListaApostadores instance = new ListaApostadores();
         
         //Adds and removes the same punter

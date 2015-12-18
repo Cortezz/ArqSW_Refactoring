@@ -79,8 +79,8 @@ public class ApostadorViewTest {
         System.out.println("viewUpdateApostador");
         BetESSAPI controller = new BetESSAPI();
         ApostadorView av = new ApostadorView(controller);
-        Apostador a = new Apostador("josé","j@gmail.com",1000.0);
-        Apostador a2 = new Apostador("filipe","j@gmail.com",1002);
+        Apostador a = new Apostador("josé","j@gmail.com",1000f);
+        Apostador a2 = new Apostador("filipe","j@gmail.com",1002f);
         viewUpdateApostadorFakeInput(a, "filipe,j@gmail.com,1002.0");
         assertEquals(a,a2);
         
@@ -120,7 +120,7 @@ public class ApostadorViewTest {
                     String[] tokens = readinput.split(",");
                     a.setName(tokens[0]);
                     a.setEmail(tokens[1]);
-                    a.setBetESScoins(Double.parseDouble(tokens[2]));
+                    a.setBetESScoins(Float.parseFloat(tokens[2]));
                     return a;
             } catch (IOException e) {e.printStackTrace();}
             return null;
@@ -146,7 +146,7 @@ public class ApostadorViewTest {
                 String[] tokens = readinput.split(",");
                 a.setName(tokens[0]);
                 a.setEmail(tokens[1]);
-                a.setBetESScoins(Double.parseDouble(tokens[2]));
+                a.setBetESScoins(Float.parseFloat(tokens[2]));
 
             } catch (IOException e) { e.printStackTrace();}
 	}

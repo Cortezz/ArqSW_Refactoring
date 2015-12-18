@@ -55,7 +55,7 @@ public class ApostaViewTest {
         BetESSAPI controller = new BetESSAPI();
         ApostaView av = new ApostaView(controller);
         Aposta a = new Aposta();
-        Apostador a1 = new Apostador("José","j@gmail.com",1000);
+        Apostador a1 = new Apostador("José","j@gmail.com",1000f);
         a.setApostador(a1);
         a.setM_aposta(0.5f);
         a.setOdd_fixada(new Odd(3,2,1));
@@ -74,7 +74,7 @@ public class ApostaViewTest {
          BetESSAPI controller = new BetESSAPI();
         ApostaView av = new ApostaView(controller);
         Aposta a = new Aposta();
-        Apostador a1 = new Apostador("José","j@gmail.com",1000);
+        Apostador a1 = new Apostador("José","j@gmail.com",1000f);
         a.setApostador(a1);
         a.setM_aposta(0.5f);
         a.setOdd_fixada(new Odd(3,2,1));
@@ -93,7 +93,7 @@ public class ApostaViewTest {
         System.out.println("viewCreateAposta");
         Aposta a1 = viewCreateApostaFakeInput("5000,x");
         Aposta a2 = viewCreateApostaFakeInput("5000,x");
-        Apostador a = new Apostador("José","j@gmail.com",1000);
+        Apostador a = new Apostador("José","j@gmail.com",1000f);
         a1.setApostador(a);
         a2.setApostador(a);
         Odd o = new Odd(1,2,3);
@@ -110,8 +110,8 @@ public class ApostaViewTest {
         System.out.println("viewCreateAposta");
         Aposta a1 = viewCreateApostaFakeInput("5000,x");
         Aposta a2 = viewCreateApostaFakeInput("5000,x");
-        Apostador ap1 = new Apostador("José","j@gmail.com",1000);
-        Apostador ap2 = new Apostador("Fernando","j@gmail.com",1000);
+        Apostador ap1 = new Apostador("José","j@gmail.com",1000f);
+        Apostador ap2 = new Apostador("Fernando","j@gmail.com",1000f);
         a1.setApostador(ap1);
         a2.setApostador(ap2);
         Odd o = new Odd(1,2,3);
@@ -127,7 +127,7 @@ public class ApostaViewTest {
     @Test
     public void testViewUpdateAposta() {
         Aposta a1 = viewCreateApostaFakeInput("5000,x");
-        Apostador ap1 = new Apostador("José","j@gmail.com",1000);
+        Apostador ap1 = new Apostador("José","j@gmail.com",1000f);
         Odd o = new Odd(1,2,3);
         a1.setApostador(ap1);
         a1.setOdd_fixada(o);

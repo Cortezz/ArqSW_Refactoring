@@ -43,7 +43,6 @@ public class OddView {
     
     /** CRUD Methods **/
     
-    
     /**
      * View - Read Method.
      * @param a Odds to be read.

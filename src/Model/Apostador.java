@@ -8,7 +8,7 @@ package Model;
 public class Apostador implements Observer{
 
 	private String email;
-	private double betESScoins;
+	private float betESScoins;
 	private String name;
 
         /**
@@ -17,7 +17,7 @@ public class Apostador implements Observer{
          * @param email E-mail of the punter.
          * @param betESScoins Amount of BetESSCoins the punter has.
          */
-	public Apostador(String name, String email, double betESScoins) {
+	public Apostador(String name, String email, float betESScoins) {
 		this.email = email;
 		this.name = name;
                 this.betESScoins = betESScoins;
@@ -35,11 +35,11 @@ public class Apostador implements Observer{
         
         /**Getters*/
 	public String getEmail() {return email;}
-        public double getBetESScoins() {return betESScoins;}
+        public float getBetESScoins() {return betESScoins;}
         public String getName() { return name;}
         /**Setters**/
         public void setEmail(String email) { this.email = email;}
-        public void setBetESScoins(double betESScoins) { this.betESScoins = betESScoins;}
+        public void setBetESScoins(float betESScoins) { this.betESScoins = betESScoins;}
         public void setName(String name) { this.name = name;}
 
 	@Override

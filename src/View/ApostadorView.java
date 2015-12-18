@@ -53,7 +53,7 @@ public class ApostadorView {
                     String[] tokens = readinput.split(",");
                     a.setName(tokens[0]);
                     a.setEmail(tokens[1]);
-                    a.setBetESScoins(Double.parseDouble(tokens[2]));
+                    a.setBetESScoins(Float.parseFloat(tokens[2]));
                     return a;
             } catch (IOException e) {e.printStackTrace();}
             return null;
@@ -73,7 +73,7 @@ public class ApostadorView {
                 String[] tokens = readinput.split(",");
                 a.setName(tokens[0]);
                 a.setEmail(tokens[1]);
-                a.setBetESScoins(Double.parseDouble(tokens[2]));
+                a.setBetESScoins(Float.parseFloat(tokens[2]));
 
             } catch (IOException e) { e.printStackTrace();}
 	}
