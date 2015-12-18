@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.HashMap;
+
 /**
  * Class which represents a bet.
  * @author José Cortez
@@ -49,6 +51,21 @@ public class Aposta {
         public void setResultado(Evento.Resultado resultado) { this.resultado = resultado;}
 
         
+        /**
+         * Calculates the gains a punter associated with an odd;
+         * @return Gains of the bet.
+         */
+        public float calculaPremio (String odd){
+            HashMap<String,Float> odds = new HashMap<>();
+            odds.put("1",odd_fixada.getOdd1());
+            odds.put("x",odd_fixada.getOddx());
+            odds.put("2",odd_fixada.getOdd2());
+            return (this.getValor() * odds.get(odd));
+        }
+        
+        public void notificaApostador (float notificacao){
+            this.apostador.update(Float.toString(notificacao));
+        }
         
         
         /**Equals**/

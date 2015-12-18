@@ -89,4 +89,32 @@ public class ApostaTest {
         assertEquals(a1,a2);
     }
     
+    /**
+     * Test of calculaPremio method, of class Aposta.
+     */
+    @Test
+    public void testCalculaPremio (){
+        
+        Aposta a = new Aposta (new Apostador(), 50f, Evento.Resultado.VITORIA, new Odd(1,2,3));
+        assertTrue("This should be true", 50f==a.calculaPremio("1"));
+    }
+    /**
+     * 2nd Test of calculaPremio method, of class Aposta.
+     */
+    @Test
+    public void testCalculaPremio2 (){
+        
+        Aposta a = new Aposta (new Apostador(), 50f, Evento.Resultado.VITORIA, new Odd(1,2,3));
+        assertTrue("This should be true", 100f==a.calculaPremio("x"));
+    }
+    /**
+     * 3rd Test of calculaPremio method, of class Aposta.
+     */
+    @Test
+    public void testCalculaPremio3 (){
+        
+        Aposta a = new Aposta (new Apostador(), 50f, Evento.Resultado.VITORIA, new Odd(1,2,3));
+        assertTrue("This should be true", 150f==a.calculaPremio("2"));
+    }
+    
 }

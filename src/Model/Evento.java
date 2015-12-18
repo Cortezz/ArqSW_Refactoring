@@ -130,24 +130,28 @@ public class Evento implements Subject {
                 Enumeration<Aposta> lista_apostas = this.listaApostas.elements();
                 while (lista_apostas.hasMoreElements()) {
                     Aposta aposta = lista_apostas.nextElement();
-                    if (this.resultado_final == aposta.getResultado()) {
-                        switch (aposta.getResultado()) {
-                                case VITORIA:
-                                        premio = (aposta.getValor() * aposta.getOdd_fixada().getOdd1());
-                                        break;
-                                case EMPATE:
-                                        premio = (aposta.getValor() * aposta.getOdd_fixada().getOddx());
-                                        break;
-                                case DERROTA:
-                                        premio = (aposta.getValor() * aposta.getOdd_fixada().getOdd2());
-                                        break;
-                        }
-                    }
+                    if (this.resultado_final == aposta.getResultado()) 
+                        premio = calculaPremioConsoanteResultado(aposta,aposta.getResultado());
                     else premio = 0;
-                    aposta.getApostador().update(Float.toString(premio));
+                    aposta.notificaApostador(premio);
                 }
             }
 	}
+        
+        
+        
+        public float calculaPremioConsoanteResultado (Aposta aposta, Evento.Resultado res){
+            switch (res) {
+                case VITORIA:
+                        return aposta.calculaPremio("1");
+                case EMPATE:
+                        return aposta.calculaPremio("x");
+                case DERROTA:
+                        return aposta.calculaPremio("2");
+            }
+            return 0;
+            
+        }
 
         
 	
