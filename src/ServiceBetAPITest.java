@@ -9,9 +9,20 @@ public class ServiceBetAPITest {
 
         
         
+       
+        
         
         // criar casa de apostas
         BetESSAPI casaApostas = new BetESSAPI();
+        
+        
+        /*
+        OddView ov = new OddView();
+        Odd o = ov.viewCreateOdd();
+        System.out.println(ov.viewOdd(o));
+        ov.viewUpdateOdd(o);
+        System.out.println(ov.viewOdd(o));
+        ov.viewDeleteOdd(o);*/
 
         /*
         // Criar dois eventos na casa de apostas
@@ -29,9 +40,7 @@ public class ServiceBetAPITest {
 
         Bookie bookie1 = casaApostas.registaBookie();
         Evento evento1 = casaApostas.registaEvento(bookie1);
-        casaApostas.actualizaOdd(evento1, 1, 2, 3);
         Evento evento2 = casaApostas.registaEvento(bookie1);
-        casaApostas.actualizaOdd(evento2,1, 5, 3);
         
         casaApostas.viewEventos();
         casaApostas.viewApostadores();

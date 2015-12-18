@@ -51,9 +51,9 @@ public class OddView {
      */
     public String viewOdd(Odd o) {
         return "Odd{" +
-            "1='" + o.getOdd1() +
-            ",X='" + o.getOddx() +
-            ",2='" + o.getOdd2() +
+            "1=" + o.getOdd1() +
+            ",X=" + o.getOddx() +
+            ",2=" + o.getOdd2() +
             '}';
     }
     
@@ -65,7 +65,7 @@ public class OddView {
     public Odd viewCreateOdd(){
         String readinput;
         Odd o = new Odd();
-        this.out.println("Introduza as odds para vitória em casa, empate e vitória fora: odd1,oddx,odd2\n");
+        this.out.println("Introduza as odds para vitória em casa, empate e vitória fora: (odd1,oddx,odd2)\n");
         try {
             readinput = this.in.readLine();
             String[] tokens = readinput.split(",");

@@ -84,6 +84,7 @@ public class Evento implements Subject {
         public void setResultadoFinal (Evento.Resultado res) {this.resultado_final = res;}
         public void setID (int id ) {this.id = id;}
         public void setOdds(float odd_1, float odd_x, float odd_2) { this.odds = new Odd(odd_1,odd_x,odd_2);}
+        public void setOdds (Odd o) {this.odds = o;}
         public void setBookieCriouEvento (Bookie b) {this.bookieCriouEvento = b;}
         public void setBookieFechouEvento (Bookie b) {this.bookieFechouEvento = b;}
 

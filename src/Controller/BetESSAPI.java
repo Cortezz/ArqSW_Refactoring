@@ -17,6 +17,7 @@ public class BetESSAPI {
         private EventoView eventoView;
         private ApostadorView apostadorView;
         private BookieView bookieView;
+        private OddView oddView;
 
 	public BetESSAPI() {
             
@@ -29,6 +30,7 @@ public class BetESSAPI {
                 this.eventoView = new EventoView(this);
                 this.apostaView = new ApostaView(this);
                 this.bookieView = new BookieView(this);
+                this.oddView = new OddView(this);
 	}
         
                                 /******* APOSTAS ***********/
@@ -111,6 +113,8 @@ public class BetESSAPI {
         public Evento registaEvento (Bookie b){
             Evento newevento = eventoView.viewCreateEvento();
             newevento.setBookieCriouEvento(b);
+            Odd o = oddView.viewCreateOdd();
+            newevento.setOdds(o);
             this.listaEventos.addEvento(newevento.getID(),newevento);
             return newevento;
         }
@@ -122,6 +126,8 @@ public class BetESSAPI {
         public void updateEvento (Evento e){
             listaEventos.removeEvento(e.getID());
             eventoView.viewUpdateEvento(e);
+            Odd o = oddView.viewUpdateOdd(e.getOdds());
+            e.setOdds(o);
             listaEventos.addEvento(e.getID(), e);
         }
         

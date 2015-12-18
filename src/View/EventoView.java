@@ -47,13 +47,14 @@ public class EventoView {
      * @return ToString-esque appearance.
      */
     public String viewEvento(Evento e) {
+        OddView ov = new OddView();
         return "Evento{" +
             "equipa1='" + e.getEquipa1() + '\'' +
             ", equipa2='" + e.getEquipa2() + '\'' +
             ", resultado_final=" + e.getResultadoFinal() +
             ", estado=" + e.getStatus() +
             ", data da aposta" + e.getDataEvento().toString() +
-            ", ultima odd" + e.getOdds().toString()+
+            ", "+ ov.viewOdd(e.getOdds())+
             '}';
 }
 
