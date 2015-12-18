@@ -29,7 +29,7 @@ public class ListaBookies {
     
     /**
      * Adds a bookie to the list.
-     * @param name Name of the bookie.
+     * @param nome Name of the bookie.
      * @param b Instance of the bookie to be added.
      */
     public void addBookie (String nome, Bookie b){

@@ -90,7 +90,7 @@ public class Evento implements Subject {
         
         /**
          * Closes an event. After this stage no bets will be able to take place.
-         * @param resultadofinal Final result of the event.
+         * @param res Final result of the event.
          * @return Boolean condition which expresses the method's success.
          */
 	public boolean fechaEvento(Resultado res){

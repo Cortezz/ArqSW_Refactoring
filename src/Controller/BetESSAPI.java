@@ -91,7 +91,7 @@ public class BetESSAPI {
         /**
          * Closes an event, given an outcome.
          * @param evento Event to be closed.
-         * @param resultado Outcome of the event.
+         * @param res Outcome of the event.
          * @param b Instance of the bookie who closed the event.
          */
 	public void  fechaEvento(Evento evento, Evento.Resultado res, Bookie b){
@@ -180,7 +180,6 @@ public class BetESSAPI {
         /**
          * CRUD - Update method.
          * @param apostador Punter to be updated.
-         * @return 
          */
             public void actualizaApostador(Apostador apostador) {
             listaApostadores.removeApostador(apostador.getEmail());
@@ -188,6 +187,10 @@ public class BetESSAPI {
             listaApostadores.addApostador(apostador.getEmail(), apostador);
 	}
 
+            /**
+             * CRUD - Delete method.
+             * @param apostador Putner to be removed.
+             */
 	public void deleteApostador(Apostador apostador){
             apostadorView.viewDeleteApostador(apostador);
             listaApostadores.removeApostador(apostador.getEmail());
