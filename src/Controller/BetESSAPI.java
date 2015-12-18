@@ -89,8 +89,8 @@ public class BetESSAPI {
          * @param resultado Outcome of the event.
          * @param b Instance of the bookie who closed the event.
          */
-	public void  fechaEvento(Evento evento, char resultado, Bookie b){
-            evento.fechaEvento(resultado);
+	public void  fechaEvento(Evento evento, Evento.Resultado res, Bookie b){
+            evento.fechaEvento(res);
             evento.setBookieFechouEvento(b);
 	}
 

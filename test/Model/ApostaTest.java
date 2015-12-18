@@ -80,7 +80,7 @@ public class ApostaTest {
         System.out.println("equals");
         Apostador jose = new Apostador ("jose", "jose@gmail.com", 1000f);
         Odd odd = new Odd(3,2,1);
-        Aposta a1 = new Aposta(jose, 5f, '2', odd);
+        Aposta a1 = new Aposta(jose, 5f, Evento.Resultado.DERROTA, odd);
         Aposta a2 = new Aposta();
         a2.setApostador(jose);
         a2.setValor(5f);

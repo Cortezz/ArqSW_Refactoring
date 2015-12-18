@@ -94,19 +94,8 @@ public class Evento implements Subject {
          * @param resultadofinal Final result of the event.
          * @return Boolean condition which expresses the method's success.
          */
-	public boolean fechaEvento(char resultadofinal){
-
-			switch (resultadofinal) {
-				case '1':
-					this.resultado_final = Resultado.VITORIA;
-					break;
-				case 'x':
-					this.resultado_final = Resultado.EMPATE;
-					break;
-				case '2':
-					this.resultado_final = Resultado.DERROTA;
-					break;
-			}
+	public boolean fechaEvento(Resultado res){
+                this.resultado_final = res;
 		this.isOpen = false;
 		this.notifyApostadores();
 		return true;
@@ -147,13 +136,13 @@ public class Evento implements Subject {
 
 					switch (aposta.getResultado()) {
 						case VITORIA:
-							premio = (float) (aposta.getValor() * aposta.getOdd_fixada().getOdd1());
+							premio = (aposta.getValor() * aposta.getOdd_fixada().getOdd1());
 							break;
 						case EMPATE:
-							premio = (float) (aposta.getValor() * aposta.getOdd_fixada().getOddx());
+							premio = (aposta.getValor() * aposta.getOdd_fixada().getOddx());
 							break;
 						case DERROTA:
-							premio = (float) (aposta.getValor() * aposta.getOdd_fixada().getOdd2());
+							premio = (aposta.getValor() * aposta.getOdd_fixada().getOdd2());
 							break;
 					}
 				}

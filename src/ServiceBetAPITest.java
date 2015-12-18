@@ -1,14 +1,12 @@
 
 import Controller.BetESSAPI;
 import Model.*;
+import Model.Evento.Resultado;
 import View.*;
 
 public class ServiceBetAPITest {
 
     public static void main(String[] args) {
-
-        
-        
        
         
         
@@ -52,8 +50,8 @@ public class ServiceBetAPITest {
         Aposta aposta2 = casaApostas.registaAposta(evento2, apostador2);
         
         
-        casaApostas.fechaEvento(evento1, 'x',bookie1);
-        casaApostas.fechaEvento(evento2, 'x',bookie1);
+        casaApostas.fechaEvento(evento1, Evento.Resultado.EMPATE,bookie1);
+        casaApostas.fechaEvento(evento2, Evento.Resultado.EMPATE ,bookie1);
 
         
         

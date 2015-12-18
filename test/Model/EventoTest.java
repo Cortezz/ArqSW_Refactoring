@@ -99,12 +99,16 @@ public class EventoTest {
         Apostador a1 = new Apostador("Josa","j@gmail.com",1000f);
         Apostador a2 = new Apostador("Filipe","f@gmail.com",1000f);
         
-        Aposta ap1 = new Aposta(a1, 50, 'x', e1.getOdds());
-        Aposta ap2 = new Aposta(a2, 50, '1', e1.getOdds());
-        Aposta ap3 = new Aposta(a2, 100,'x', e1.getOdds());
-        Aposta ap4 = new Aposta(a1, 150,'2', e1.getOdds());
-        Aposta ap5 = new Aposta(a2, 200,'2', e1.getOdds());
-        Aposta ap6 = new Aposta(a1,1500,'x',e1.getOdds());
+        Evento.Resultado vitoria = Evento.Resultado.VITORIA;
+        Evento.Resultado empate = Evento.Resultado.EMPATE;
+        Evento.Resultado derrota = Evento.Resultado.DERROTA;
+        
+        Aposta ap1 = new Aposta(a1, 50, empate, e1.getOdds());
+        Aposta ap2 = new Aposta(a2, 50, vitoria, e1.getOdds());
+        Aposta ap3 = new Aposta(a2, 100,empate, e1.getOdds());
+        Aposta ap4 = new Aposta(a1, 150,derrota, e1.getOdds());
+        Aposta ap5 = new Aposta(a2, 200,derrota, e1.getOdds());
+        Aposta ap6 = new Aposta(a1,1500,empate,e1.getOdds());
         
         e1.registaAposta(ap1);
         e1.registaAposta(ap2);
@@ -117,7 +121,7 @@ public class EventoTest {
         PrintStream original = new PrintStream(System.out); 
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        e1.fechaEvento('x');
+        e1.fechaEvento(Evento.Resultado.EMPATE);
         
         //Array List with the name and prize
         ArrayList<String> tokens = getTokens(outContent.toString(),original);
@@ -223,7 +227,7 @@ public class EventoTest {
     public void testGetResultadoFinal() {
         System.out.println("getResultadoFinal");
         Evento e1 = new Evento ("FC Porto", "SC Braga", new Date());
-        e1.fechaEvento('x');
+        e1.fechaEvento(Resultado.EMPATE);
         assertEquals(e1.getResultadoFinal(),Resultado.EMPATE);
     }
 
@@ -271,7 +275,7 @@ public class EventoTest {
     public void testFechaEvento() {
         System.out.println("fechaEvento");
         Evento e1 = new Evento ("FC Porto", "SC Braga", new Date());
-        e1.fechaEvento('x');
+        e1.fechaEvento(Evento.Resultado.EMPATE);
         assertEquals(e1.getStatus(),false);
     
     }

@@ -29,20 +29,10 @@ public class Aposta {
          * @param resultado The option chosen by the punter.
          * @param odd_actual The fixed odds of the bet.
          */
-	public Aposta(Apostador apostador, float valor, char resultado, Odd odd_actual) {
+	public Aposta(Apostador apostador, float valor, Evento.Resultado resultado, Odd odd_actual) {
 		this.apostador = apostador;
 		this.valor = valor;
-		switch (resultado) {
-			case '1':
-				this.resultado = Evento.Resultado.VITORIA;
-				break;
-			case 'x':
-				this.resultado = Evento.Resultado.EMPATE;
-				break;
-			case '2':
-				this.resultado = Evento.Resultado.DERROTA;
-				break;
-		}
+                this.resultado = resultado;
 		this.odd_fixada = odd_actual.clone();
 	}
 

@@ -65,7 +65,7 @@ public class BetESSAPITest {
         Evento evento = new Evento();
         BetESSAPI controller = new BetESSAPI();
         Bookie b = new Bookie("José");
-        controller.fechaEvento(evento, '1',b);
+        controller.fechaEvento(evento, Evento.Resultado.VITORIA,b);
         
         assertEquals(Evento.Resultado.VITORIA, evento.getResultadoFinal());
     }
