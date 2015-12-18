@@ -57,7 +57,7 @@ public class ApostaViewTest {
         Aposta a = new Aposta();
         Apostador a1 = new Apostador("José","j@gmail.com",1000f);
         a.setApostador(a1);
-        a.setM_aposta(0.5f);
+        a.setValor(0.5f);
         a.setOdd_fixada(new Odd(3,2,1));
         String result = av.viewAposta(a);
         String result2 = av.viewAposta(a);
@@ -76,10 +76,10 @@ public class ApostaViewTest {
         Aposta a = new Aposta();
         Apostador a1 = new Apostador("José","j@gmail.com",1000f);
         a.setApostador(a1);
-        a.setM_aposta(0.5f);
+        a.setValor(0.5f);
         a.setOdd_fixada(new Odd(3,2,1));
         String result = av.viewAposta(a);
-        a.setM_aposta(1f);
+        a.setValor(1f);
         String result2 = av.viewAposta(a);
         
         assertFalse("This should be false", result.equals(result2));
@@ -135,7 +135,7 @@ public class ApostaViewTest {
         Aposta a2 = viewCreateApostaFakeInput("5000,x");
         a2.setApostador(ap1);
         a2.setOdd_fixada(o);
-        a2.setM_aposta(1000f);
+        a2.setValor(1000f);
         a2.setResultado(Evento.Resultado.DERROTA);
         
         viewUpdateApostaFakeInput(a1,"1000,2");
@@ -169,7 +169,7 @@ public class ApostaViewTest {
                             a.setResultado(Evento.Resultado.DERROTA);
                             break;
             }
-            a.setM_aposta(Float.parseFloat(tokens[0]));
+            a.setValor(Float.parseFloat(tokens[0]));
             return a;
         } catch (IOException e) {e.printStackTrace();}
         return null;
@@ -201,7 +201,7 @@ public class ApostaViewTest {
                             a.setResultado(Evento.Resultado.DERROTA);
                             break;
             }
-            a.setM_aposta(Float.parseFloat(tokens[0]));
+            a.setValor(Float.parseFloat(tokens[0]));
         } catch (IOException e) {e.printStackTrace();}
     }
     

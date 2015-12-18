@@ -13,6 +13,7 @@ public class BetESSAPI {
         
 	private double betESStotal;
 	private String name;
+        
         private ApostaView apostaView;
         private EventoView eventoView;
         private ApostadorView apostadorView;

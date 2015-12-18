@@ -61,7 +61,7 @@ public class EventoTest {
       //Associates bet with punter.
       ap.setApostador(a);
       ap.setResultado(Resultado.VITORIA);
-      ap.setM_aposta(0.5f);
+      ap.setValor(0.5f);
       ap.setOdd_fixada(new Odd());
       //Creates an event
       Evento e = new Evento ("FC Porto", "SC Braga", new Date());

@@ -147,13 +147,13 @@ public class Evento implements Subject {
 
 					switch (aposta.getResultado()) {
 						case VITORIA:
-							premio = (float) (aposta.getM_aposta() * aposta.getOdd_fixada().getOdd1());
+							premio = (float) (aposta.getValor() * aposta.getOdd_fixada().getOdd1());
 							break;
 						case EMPATE:
-							premio = (float) (aposta.getM_aposta() * aposta.getOdd_fixada().getOddx());
+							premio = (float) (aposta.getValor() * aposta.getOdd_fixada().getOddx());
 							break;
 						case DERROTA:
-							premio = (float) (aposta.getM_aposta() * aposta.getOdd_fixada().getOdd2());
+							premio = (float) (aposta.getValor() * aposta.getOdd_fixada().getOdd2());
 							break;
 					}
 				}

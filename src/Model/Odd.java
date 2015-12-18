@@ -1,8 +1,8 @@
 package Model;
 
 /**
- * Class which represents the odds of 1/x/2 event.
- * @author Cortez
+ * Class which represents the odds of a 1/x/2 event.
+ * @author José Cortez
  */
 public class Odd {
 

@@ -50,7 +50,7 @@ public class ApostaView {
         
         return "Aposta{" +
             "Apostador='" + av.viewApostador(a.getApostador()) +
-            ", m_aposta='" + a.getM_aposta() +
+            ", m_aposta='" + a.getValor() +
             ", Resultado_final='" + a.getResultado() +
             ", Odd_fixada='" +a.getOdd_fixada().toString() +
             '}';
@@ -68,18 +68,8 @@ public class ApostaView {
         try {
             readinput = this.in.readLine();
             String[] tokens = readinput.split(",");
-            switch (tokens[1]) {
-                    case "1":
-                            a.setResultado(Evento.Resultado.VITORIA);
-                            break;
-                    case "x":
-                            a.setResultado(Evento.Resultado.EMPATE);
-                            break;
-                    case "2":
-                            a.setResultado(Evento.Resultado.DERROTA);
-                            break;
-            }
-            a.setM_aposta(Float.parseFloat(tokens[0]));
+            a.setResultado(stringToResultado(tokens[1]));
+            a.setValor(Float.parseFloat(tokens[0]));
             return a;
         } catch (IOException e) {e.printStackTrace();}
         return null;
@@ -96,20 +86,25 @@ public class ApostaView {
         try {
             readinput = this.in.readLine();
             String[] tokens = readinput.split(",");
-            switch (tokens[1]) {
+            a.setResultado(stringToResultado(tokens[1]));
+            a.setValor(Float.parseFloat(tokens[0]));
+        } catch (IOException e) {e.printStackTrace();}
+    }
+    
+    private Evento.Resultado stringToResultado(String s){
+        Evento.Resultado res = null;
+        switch (s) {
 		case "1":
-                    a.setResultado(Evento.Resultado.VITORIA);
+                    res = Evento.Resultado.VITORIA;
                     break;
                 case "x":
-                    a.setResultado(Evento.Resultado.EMPATE);
+                    res = Evento.Resultado.EMPATE;
                     break;
                 case "2":
-                    a.setResultado(Evento.Resultado.DERROTA);
+                    res = Evento.Resultado.DERROTA;
                     break;
             }
-            a.setM_aposta(Float.parseFloat(tokens[0]));
-        } catch (IOException e) {e.printStackTrace();}
-        
+        return res;
     }
     
     /**

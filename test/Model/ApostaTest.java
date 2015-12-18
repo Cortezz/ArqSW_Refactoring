@@ -83,7 +83,7 @@ public class ApostaTest {
         Aposta a1 = new Aposta(jose, 5f, '2', odd);
         Aposta a2 = new Aposta();
         a2.setApostador(jose);
-        a2.setM_aposta(5f);
+        a2.setValor(5f);
         a2.setOdd_fixada(new Odd(3,2,1));
         a2.setResultado(Evento.Resultado.DERROTA);
         assertEquals(a1,a2);
