@@ -51,8 +51,8 @@ public class ApostadorViewTest {
         System.out.println("viewCreateApostador");
         BetESSAPI controller = new BetESSAPI();
         ApostadorView av = new ApostadorView(controller);
-        Apostador a = viewCreateApostadorFakeInput("josé","j@gmail.com","1000");
-        Apostador a2 = viewCreateApostadorFakeInput("josé","j@gmail.com","1000");
+        Apostador a = viewCreateApostadorFakeInput("josé,j@gmail.com,1000");
+        Apostador a2 = viewCreateApostadorFakeInput("josé,j@gmail.com,1000");
         
         assertEquals(a,a2);
     }
@@ -65,8 +65,8 @@ public class ApostadorViewTest {
         System.out.println("viewCreateApostador");
         BetESSAPI controller = new BetESSAPI();
         ApostadorView av = new ApostadorView(controller);
-        Apostador a = viewCreateApostadorFakeInput("josé","j@gmail.com","1000");
-        Apostador a2 = viewCreateApostadorFakeInput("filipe","j@gmail.com","1000");
+        Apostador a = viewCreateApostadorFakeInput("josé,j@gmail.com,1000");
+        Apostador a2 = viewCreateApostadorFakeInput("filipe,j@gmail.com,1000");
         
         assertFalse("This should be false",a.equals(a2));
     }
@@ -81,7 +81,7 @@ public class ApostadorViewTest {
         ApostadorView av = new ApostadorView(controller);
         Apostador a = new Apostador("josé","j@gmail.com",1000.0);
         Apostador a2 = new Apostador("filipe","j@gmail.com",1002);
-        viewUpdateApostadorFakeInput(a, "filipe","j@gmail.com","1002.0");
+        viewUpdateApostadorFakeInput(a, "filipe,j@gmail.com,1002.0");
         assertEquals(a,a2);
         
     }
@@ -108,11 +108,10 @@ public class ApostadorViewTest {
      * @param coins Amount of coins the punter has.
      * @return The punter created.
      */
-    public Apostador viewCreateApostadorFakeInput(String nome, String email, String coins){
+    public Apostador viewCreateApostadorFakeInput(String data){
 
             String readinput;
             Apostador a = new Apostador();
-            String data = nome+","+email+","+coins;
             System.setIn(new ByteArrayInputStream(data.getBytes()));
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
             System.out.print("Introduza os seguintes dados de Apostador: (Nome, email, montante betESScoins\n");
@@ -135,10 +134,9 @@ public class ApostadorViewTest {
          * @param nome Name of the punter. 
          * @param coins Amount of coins the punter has.
          */
-	public void viewUpdateApostadorFakeInput(Apostador a, String nome, String email, String coins){
+	public void viewUpdateApostadorFakeInput(Apostador a, String data){
             
             String readinput;
-            String data = nome+","+email+","+coins;
             System.out.print("Introduza novos dados de Apostador: (Nome("
                     +a.getName()+"), email("+a.getEmail()+"), montante betESScoins("+ a.getBetESScoins()+")\n");
             System.setIn(new ByteArrayInputStream(data.getBytes()));

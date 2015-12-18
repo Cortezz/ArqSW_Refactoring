@@ -98,10 +98,10 @@ public class BookieViewTest {
      * @param nome Name of the bookie.
      * @return Newly created Bookie.
      */
-    public Bookie viewCreateBookieFakeInput(String nome){
+    public Bookie viewCreateBookieFakeInput(String data){
         String readinput;
         Bookie b = new Bookie();
-        System.setIn(new ByteArrayInputStream(nome.getBytes()));
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Introduza o nome do Bookie: \n");
         try {
@@ -117,9 +117,9 @@ public class BookieViewTest {
      * @param b Instance of the bookie to be updated.
      * @param nome Name of the bookie.
      */
-    public void viewUpdateBookieFakeInput (Bookie b, String nome){
+    public void viewUpdateBookieFakeInput (Bookie b, String data){
         String readinput;
-        System.setIn(new ByteArrayInputStream(nome.getBytes()));
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	System.out.println("Introduza o nome do Bookie:\n");
         try {

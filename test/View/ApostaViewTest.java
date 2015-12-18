@@ -91,8 +91,8 @@ public class ApostaViewTest {
     @Test
     public void testViewCreateAposta() {
         System.out.println("viewCreateAposta");
-        Aposta a1 = viewCreateApostaFakeInput("5000","x");
-        Aposta a2 = viewCreateApostaFakeInput("5000","x");
+        Aposta a1 = viewCreateApostaFakeInput("5000,x");
+        Aposta a2 = viewCreateApostaFakeInput("5000,x");
         Apostador a = new Apostador("José","j@gmail.com",1000);
         a1.setApostador(a);
         a2.setApostador(a);
@@ -108,8 +108,8 @@ public class ApostaViewTest {
     @Test
     public void testeViewCreateAposta2(){
         System.out.println("viewCreateAposta");
-        Aposta a1 = viewCreateApostaFakeInput("5000","x");
-        Aposta a2 = viewCreateApostaFakeInput("5000","x");
+        Aposta a1 = viewCreateApostaFakeInput("5000,x");
+        Aposta a2 = viewCreateApostaFakeInput("5000,x");
         Apostador ap1 = new Apostador("José","j@gmail.com",1000);
         Apostador ap2 = new Apostador("Fernando","j@gmail.com",1000);
         a1.setApostador(ap1);
@@ -126,19 +126,19 @@ public class ApostaViewTest {
      */
     @Test
     public void testViewUpdateAposta() {
-        Aposta a1 = viewCreateApostaFakeInput("5000","x");
+        Aposta a1 = viewCreateApostaFakeInput("5000,x");
         Apostador ap1 = new Apostador("José","j@gmail.com",1000);
         Odd o = new Odd(1,2,3);
         a1.setApostador(ap1);
         a1.setOdd_fixada(o);
         
-        Aposta a2 = viewCreateApostaFakeInput("5000","x");
+        Aposta a2 = viewCreateApostaFakeInput("5000,x");
         a2.setApostador(ap1);
         a2.setOdd_fixada(o);
         a2.setM_aposta(1000f);
         a2.setResultado(Evento.Resultado.DERROTA);
         
-        viewUpdateApostaFakeInput(a1,"1000","2");
+        viewUpdateApostaFakeInput(a1,"1000,2");
         assertEquals(a1,a2);
     }
     
@@ -149,11 +149,10 @@ public class ApostaViewTest {
      * @param resultado Outcome of the bet.
      * @return The bet created.
      */
-     public Aposta viewCreateApostaFakeInput(String montante, String resultado){
+     public Aposta viewCreateApostaFakeInput(String data){
         String readinput;
         Aposta a = new Aposta();
         System.out.println("Introduza o resultado e o montante a apostar: montante, resultado\n");
-        String data = montante +","+resultado;
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         try {
@@ -183,10 +182,9 @@ public class ApostaViewTest {
       * @param montante Value of the bet.
       * @param resultado Outcome chosen by the punter for the bet.
       */
-     public void viewUpdateApostaFakeInput(Aposta a, String montante, String resultado){
+     public void viewUpdateApostaFakeInput(Aposta a, String data){
         String readinput;
         System.out.println("Introduza o resultado e o montante a apostar: montante, resultado\n");
-        String data = montante +","+resultado;
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         try {

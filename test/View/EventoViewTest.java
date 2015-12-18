@@ -81,8 +81,8 @@ public class EventoViewTest {
     public void testViewCreateEvento() {
         System.out.println("viewCreateEvento");
         EventoView ev = new EventoView();
-        Evento e1 = viewCreateEventoFakeInput("FC Porto","SC Braga");
-        Evento e2 = viewCreateEventoFakeInput("FC Porto","SC Braga");
+        Evento e1 = viewCreateEventoFakeInput("FC Porto,SC Braga");
+        Evento e2 = viewCreateEventoFakeInput("FC Porto,SC Braga");
         e1.setOdds(1,2,3);
         e2.setOdds(1,2,3);
         e1.setResultadoFinal(Evento.Resultado.VITORIA);
@@ -101,8 +101,8 @@ public class EventoViewTest {
         
         System.out.println("viewCreateEvento");
         
-        Evento e1 = viewCreateEventoFakeInput("FC Porto","SC Braga");
-        Evento e2 = viewCreateEventoFakeInput("SC Braga","FC Porto");
+        Evento e1 = viewCreateEventoFakeInput("FC Porto,SC Braga");
+        Evento e2 = viewCreateEventoFakeInput("SC Braga,FC Porto");
         e1.setOdds(1,2,3);
         e2.setOdds(1,2,3);
         assertFalse("This should be false", e1.equals(e2));
@@ -123,7 +123,7 @@ public class EventoViewTest {
         e1.setOdds(1,2,3);
         e2.setOdds(1, 2, 3);
         e2.setID(e1.getID());
-        viewUpdateEventoFakeInput(e1,"FC Barcelona", "Real Madrid");
+        viewUpdateEventoFakeInput(e1,"FC Barcelona,Real Madrid");
         e1.setDataEvento(date);
         assertEquals(e1,e2);
     }
@@ -135,11 +135,10 @@ public class EventoViewTest {
      * @param equipa2 Name of the away team.
      * @return The event created.
      */
-    public Evento viewCreateEventoFakeInput(String equipa1, String equipa2){
+    public Evento viewCreateEventoFakeInput(String data){
 
         Evento ev = new Evento();
         String readinput;
-        String data = equipa1+","+equipa2;
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Introduza as equipas participantes no evento: (Equipa1, Equipa2, DataEvento)\n");
@@ -162,9 +161,8 @@ public class EventoViewTest {
      * @param equipa1 Name of the home team.
      * @param equipa2 Name of the away team.
      */
-    public void viewUpdateEventoFakeInput(Evento ev, String equipa1, String equipa2){
+    public void viewUpdateEventoFakeInput(Evento ev, String data){
         String readinput;
-        String data = equipa1+","+equipa2;
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Introduza as equipas participantes no evento: (Equipa1, Equipa2, DataEvento)\n");
