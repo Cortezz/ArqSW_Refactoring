@@ -5,6 +5,11 @@ import Model.*;
 import View.*;
 import java.util.*;
 
+
+/**
+ * MVC - Controller.
+ * @author José Cortez
+ */
 public class BetESSAPI {
 
 	private ListaEventos listaEventos;

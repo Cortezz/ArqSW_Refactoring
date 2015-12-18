@@ -3,7 +3,6 @@ package Model;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.time.Instant;
 
 /** 
  * Class which represents an event.
@@ -100,30 +99,17 @@ public class Evento implements Subject {
 		this.notifyApostadores();
 		return true;
 	}
-
-        /*
-	public void registaAposta(Apostador apostador) {
-
-		Aposta aposta = new Aposta();
-		aposta.viewCreateAposta();
-		aposta.setApostador(apostador);
-		aposta.setOdd_fixada(this.odds);
-
-		this.listaApostas.add(aposta);
-
-	}*/
         
+        
+        /**
+         * Adds a bet to its bet list.
+         * @param a Instance of the bet to be added.
+         */
         public void registaAposta (Aposta a){
             this.listaApostas.add(a);
         }
 
-        
-
-	public void setEstado() {
-		// TODO - implement Aposta.setEstado
-
-	}
-
+        @Override
 	public void notifyApostadores() {
             float premio = 0;
             if (!this.isOpen){
@@ -140,6 +126,12 @@ public class Evento implements Subject {
         
         
         
+        /**
+         * Calculates the gains of a bet, given the event's result.
+         * @param aposta A bet.
+         * @param res Outcome of the event.
+         * @return Gains of the bet.
+         */
         public float calculaPremioConsoanteResultado (Aposta aposta, Evento.Resultado res){
             switch (res) {
                 case VITORIA:
@@ -155,6 +147,12 @@ public class Evento implements Subject {
 
         
 	
+        /**
+         * Updates the odds of the event.
+         * @param odd_1 Odd for the home win.
+         * @param odd_x Odd for the draw.
+         * @param odd_2 Odd for the away win.
+         */
 	public void updateOdds(float odd_1, float odd_x, float odd_2){
 	    this.odds.setOdd1(odd_1);
             this.odds.setOdd2(odd_2);

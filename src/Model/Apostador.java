@@ -51,7 +51,7 @@ public class Apostador implements Observer{
 				'}';
 	}
 
-	@Override
+        @Override
 	public void update(String notificacao) {
             System.out.println("\nApostador(" + this.name + "):" + notificacao + "\n");
 	}

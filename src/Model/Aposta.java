@@ -63,6 +63,10 @@ public class Aposta {
             return (this.getValor() * odds.get(odd));
         }
         
+        /**
+         * Notifies the punter about the prize he's received from a bet.
+         * @param notificacao Value of the prize.
+         */
         public void notificaApostador (float notificacao){
             this.apostador.update(Float.toString(notificacao));
         }
