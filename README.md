@@ -1,4 +1,4 @@
-# ArqSW_Refactoring
+# Software Architectures (Arquitecturas de Software)
 Software Architectures - Refactoring Assignment
 
 Given a certain program (also related with BetESS), one has to:
